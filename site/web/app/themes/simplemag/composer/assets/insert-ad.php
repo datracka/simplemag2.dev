@@ -30,7 +30,8 @@ if ( get_sub_field( 'latest_insert_ad' ) != 'latest_no_ad_option' ) :
             // Code Ad
             elseif ( get_sub_field( 'latest_insert_ad' ) == 'latest_code_ad_option' ):
 
-               echo '<div class="code-ad">' . get_sub_field( 'latest_code_ad' ) . '</div>';
+                $latest_code_ad = get_sub_field( 'latest_code_ad' );
+                echo '<div class="code-ad">' . apply_filters( 'be_the_content', $latest_code_ad ) . '</div>';
 
             endif;
 

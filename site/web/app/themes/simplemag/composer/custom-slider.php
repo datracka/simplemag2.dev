@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Custom Slider
  * Page Composer Section
@@ -28,14 +28,14 @@ $full_width_slider = get_sub_field ( 'custom_slider_type' ) == 'custom_slider_fu
 // With two posts option is selected
 $with_two_posts = get_sub_field ( 'custom_slider_type' ) == 'custom_slider_with_two';
 ?>
-   
+
 <?php if ( $with_two_posts ) : ?>
 <div class="slider-latest">
     <div class="grids">
 <?php endif; ?>
 
     <?php if( have_rows( 'custom_add_new_slide' ) ) : ?>
-            
+
             <?php if ( $with_two_posts ) : ?>
             <div class="grid-8 columns column-1">
             <?php endif; ?>
@@ -49,9 +49,15 @@ $with_two_posts = get_sub_field ( 'custom_slider_type' ) == 'custom_slider_with_
                             <?php
                             if ( get_sub_field( 'custom_slide_image' ) ) {
 
-                                // Get image size from the image upload 
+                                // Get image size from the image upload
                                 $attachment_id = get_sub_field( 'custom_slide_image' );
-                                $slide_image_size = 'big-size';
+
+                                // If Full Width option selected load original image size
+                                if ( $full_width_slider ) {
+                                    $slide_image_size = '';
+                                } else {
+                                    $slide_image_size = 'big-size';
+                                }
 
                                 // Get image src
                                 $custom_slide_image_src = wp_get_attachment_image_src( $attachment_id, $slide_image_size );
@@ -60,19 +66,19 @@ $with_two_posts = get_sub_field ( 'custom_slider_type' ) == 'custom_slider_with_
                                 $custom_slide_bg_image = 'style="background-image:url(' . esc_url( $custom_slide_image_src[0] ) . ');"';
                             ?>
 
-                                <?php 
+                                <?php
                                 /**
                                  * Slider "Full Width" option is slected
                                  * Slide image is being added as a background
                                 **/
                                 if ( $full_width_slider ) : ?>
                                     <div class="entry-image full-width-slider-image" <?php echo isset( $custom_slide_bg_image ) ? $custom_slide_bg_image : ''; ?>></div>
-                                <?php 
+                                <?php
                                 /**
                                  * Slider "Regular" option is slected
                                  * Slide image is being added as an image tag
                                 **/
-                                else : 
+                                else :
                                 ?>
                                     <figure class="entry-image">
                                         <img src="<?php echo esc_url( $custom_slide_image_src[0] ); ?>" alt="<?php the_sub_field( 'custom_slide_title' ); ?>" />
@@ -108,17 +114,17 @@ $with_two_posts = get_sub_field ( 'custom_slider_type' ) == 'custom_slider_with_
                     <?php endwhile; ?>
 
                  </div>
-            
+
             <?php if ( $with_two_posts ) : ?>
             </div><!-- Grid 8 -->
             <?php endif; ?>
 
     <?php endif; ?>
-        
-        
-        
+
+
+
     <?php if ( $with_two_posts ) : ?>
-        
+
         <?php if( have_rows( 'custom_add_post' ) ) : ?>
 
             <div class="grid-4 columns column-2 entries">
@@ -126,6 +132,10 @@ $with_two_posts = get_sub_field ( 'custom_slider_type' ) == 'custom_slider_with_
                 <?php while( have_rows( 'custom_add_post' ) ) : the_row(); ?>
 
                     <article class="post-item content-over-image content-over-image-tint">
+                        <?php if ( get_sub_field( 'custom_post_link' ) ) { ?>
+                        <a class="entry-link" href="<?php the_sub_field( 'custom_post_link' ); ?>"></a>
+                        <?php } ?>
+
                         <figure class="entry-image">
                             <?php
                             $custom_img = get_sub_field( 'custom_post_image' );
@@ -147,9 +157,6 @@ $with_two_posts = get_sub_field ( 'custom_slider_type' ) == 'custom_slider_with_
                         </figure>
 
                         <header class="entry-header">
-                            <?php if ( get_sub_field( 'custom_post_link' ) ) { ?>
-                            <a class="entry-link" href="<?php the_sub_field( 'custom_post_link' ); ?>"></a>
-                            <?php } ?>
                             <div class="inner">
                                 <div class="inner-cell">
                                     <div class="entry-frame">
@@ -167,9 +174,8 @@ $with_two_posts = get_sub_field ( 'custom_slider_type' ) == 'custom_slider_with_
             </div><!-- Grid 4 -->
 
         <?php endif; ?>
-          
+
     </div><!-- .grids -->
 </div><!-- .slider-latest -->
-    
+
 <?php endif; // if with two posts option is selected ?>
-    

@@ -42,25 +42,23 @@ global $ti_option;
                 <?php endif; ?>
                     
                     <?php if ( have_posts()) : while (have_posts() ) : the_post(); ?>
-                    
-                        <article class="entry-content">                       
-                            <?php
-                            // Output the main editor content
-                            the_content();
-                            
-                            // Output pagination if post uses <!--nextpage--> short tag
-                            $args = array(
-                                'before' => '<div class="link-pages"><h3 class="title">' . __( 'Continue Reading', 'themetext' ) . '</h3>',
-                                'after' => '</div>',
-                                'link_before' => '<span>',
-                                'link_after' => '</span>',
-                                'nextpagelink'     => '&rarr;',
-                                'previouspagelink' => '&larr;',
-                                'next_or_number'   => 'next_and_number',
-                            );
-                            wp_link_pages( $args );
-                            ?>
-                        </article>
+						
+						<?php
+						// Output the main editor content
+						the_content();
+
+						// Output pagination if post uses <!--nextpage--> short tag
+						$args = array(
+							'before' => '<div class="link-pages"><h3 class="title">' . __( 'Continue Reading', 'themetext' ) . '</h3>',
+							'after' => '</div>',
+							'link_before' => '<span>',
+							'link_after' => '</span>',
+							'nextpagelink'     => '&rarr;',
+							'previouspagelink' => '&larr;',
+							'next_or_number'   => 'next_and_number',
+						);
+						wp_link_pages( $args );
+						?>
                     
                     <?php endwhile; endif; ?>
             		

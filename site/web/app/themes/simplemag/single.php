@@ -18,7 +18,7 @@ $single_sidebar = get_post_meta( $post->ID, 'post_sidebar', true );
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            
+
             <?php
             // Post title full width
             single_title_full_width(); 

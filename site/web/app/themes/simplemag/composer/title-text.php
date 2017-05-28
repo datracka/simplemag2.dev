@@ -24,13 +24,7 @@
 	foreach ( $title_type as $type => $value ) :
 		if ( $tag == $type ) : 
             echo '<header class="section-header">' 
-                    . wp_kses( $value, 
-                        array( 
-                            'div' => array(),
-                            'h1' => array(),
-                            'h2' => array()
-                        ) 
-                    ) . 
+                    . wp_kses_post( $value ) .
                  '</header>';
         endif;
 	endforeach;
@@ -39,7 +33,7 @@
     /* Text */
     $text = get_sub_field( 'text_content' );
     if ( ! empty( $text ) ) :
-        echo '<div class="cat-description">' . esc_textarea( $text ) . '</div>';
+        echo '<div class="cat-description">' . apply_filters( 'be_the_content', $text ) . '</div>';
     endif;
 	?>
 </section><!-- Text Box -->

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Author Box for single post
  *
@@ -28,7 +28,7 @@
                 <?php printf( __( '%s', 'themetext' ), get_the_author() ); ?>
             </a>
         </span>
-        
+
         <?php
         /**
          * Social Icons
@@ -38,7 +38,7 @@
         if ( $ti_option['single_author_icons'] == 1 ) : ?>
         <div class="icon-container">
             <?php
-            $author_link = array ( 
+            $author_link = array (
                 'user_url' => 'sphere',
                 'sptwitter' => 'twitter',
                 'spfacebook' => 'facebook',
@@ -49,8 +49,8 @@
             );
             foreach ( $author_link as $link => $name ) :
             ?>
-                <?php  
-                if ( get_the_author_meta( $link ) ) : 
+                <?php
+                if ( get_the_author_meta( $link ) ) :
                     if ( $link == 'spgoogle' ) { $rel_author = '?rel=author'; }
                     else { $rel_author = ''; }
                 ?>
@@ -61,7 +61,7 @@
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
-    
+
     </div><!-- .info -->
 
     <?php
@@ -71,7 +71,7 @@
     $by_author = new WP_Query( array (
         'posts_per_page' => 1,
         'author' => get_the_author_meta( 'ID' ),
-        'orderby' => 'rand',
+        //'orderby' => 'rand',
         'no_found_rows' => true,
     ));
     ?>
@@ -83,7 +83,7 @@
         </span>
 
         <?php
-        if( $by_author->have_posts() ) : while ( $by_author->have_posts() ) : $by_author->the_post(); 
+        if( $by_author->have_posts() ) : while ( $by_author->have_posts() ) : $by_author->the_post();
         ?>
 
             <div class="item">
@@ -94,8 +94,9 @@
                         </h4>
                     </header>
                     <div class="entry-summary">
-                        <?php echo wp_trim_words( get_the_content(), 12, '...' ); ?>
+                        <?php echo wp_trim_words( get_the_excerpt(), 12, '...' ); ?>
                     </div>
+                    <a class="read-more-link" href="<?php the_permalink(); ?>"><?php _e( 'Read More', 'themetext' ); ?></a>
                 </div>
             </div>
 
@@ -105,8 +106,6 @@
 
         <?php endif; ?>
 
-        <a class="read-more-link" href="<?php get_the_permalink(); ?>"><?php _e( 'Read More', 'themetext' ); ?></a>
-
     </div><!--.author-posts-->
-        
+
 </div><!-- .author-box -->

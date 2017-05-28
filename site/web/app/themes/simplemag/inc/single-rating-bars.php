@@ -26,7 +26,7 @@ include( locate_template( 'inc/rating-calculations.php' ) );
                     <?php echo $row['score_label']; ?>
                 </h4>
                 <span class="score-outer">
-                    <span class="score-line" style="width:<?php echo $row['score_number']; ?>0%;"></span>
+                    <span class="score-line" style="width:<?php echo $row['score_number'] * 10 ?>%;"></span>
                 </span>
             </div>
             <?php endforeach; ?>

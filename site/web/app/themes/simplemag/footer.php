@@ -10,7 +10,12 @@ global $ti_option;
 
         <footer id="footer" class="no-print anmtd" role="contentinfo">
 
-        	<?php do_action( 'footer_ad' ); ?>
+        	<?php 
+            /**
+             * Footer Ad
+            **/
+            do_action( 'footer_ad' ); 
+            ?>
 
             <?php 
             /**

@@ -34,7 +34,7 @@ function ti_theme_scripts(){
         
         // Load SimpleMag bbPress CSS only in forum pages
         if ( is_bbpress() ) {
-            wp_enqueue_style( 'bbpress-style', get_stylesheet_directory_uri() . '/bbpress/bbpress-style.css', 'all' );
+            wp_enqueue_style( 'bbpress-style', get_template_directory_uri() . '/bbpress/bbpress-style.css', 'all' );
         }
         
         // Load default bbPress CSS  only in forum pages

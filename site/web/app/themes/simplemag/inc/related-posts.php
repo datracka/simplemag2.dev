@@ -7,7 +7,7 @@
  * @since 	SimpleMag 3.0
 **/
 
-global $ti_option; 
+global $ti_option;
 
 
 /**
@@ -23,7 +23,7 @@ $ti_tax_ids = array();
 
 foreach($ti_taxs as $individual_tax) $ti_tax_ids[] = $individual_tax->term_id;
 
-    $posts_to_show = $ti_option['single_related_posts_to_show'];
+    $posts_to_show = sanitize_text_field( $ti_option['single_related_posts_to_show'] );
 
     if ( $ti_option['single_related_posts_show_by'] == 'related_cat' ) {
         // Loop argumnetsnts show posts by category
@@ -35,7 +35,7 @@ foreach($ti_taxs as $individual_tax) $ti_tax_ids[] = $individual_tax->term_id;
             'ignore_sticky_posts' => 1,
             'no_found_rows' => true
         );
-    } else { 
+    } else {
         // Loop argumnetsnts show posts by category
         $args = array(
             'tag__in' => $ti_tax_ids,
@@ -50,7 +50,7 @@ foreach($ti_taxs as $individual_tax) $ti_tax_ids[] = $individual_tax->term_id;
 $ti_related_posts = new WP_Query( $args );
 ?>
 
-	
+
 <div class="single-box related-posts">
 
     <h3 class="title single-box-title">
@@ -59,7 +59,7 @@ $ti_related_posts = new WP_Query( $args );
 
     <div class="grids entries carousel">
 
-    <?php 
+    <?php
     if( $ti_related_posts->have_posts() ) :
         while ( $ti_related_posts->have_posts() ) : $ti_related_posts->the_post();
     ?>
@@ -67,7 +67,7 @@ $ti_related_posts = new WP_Query( $args );
         <div class="item">
             <figure class="entry-image">
                 <a href="<?php the_permalink(); ?>">
-                    <?php 
+                    <?php
                     if ( has_post_thumbnail() ) {
                     the_post_thumbnail( 'rectangle-size-small' );
                     } elseif( first_post_image() ) { // Set the first image from the editor

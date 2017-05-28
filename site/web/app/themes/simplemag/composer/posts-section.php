@@ -1,6 +1,6 @@
 <?php
 /**
- * Posts Section
+ * Posts Feed
  * Page Composer section.
  *
  * @package SimpleMag
@@ -16,31 +16,30 @@
 <section class="wrapper home-section posts-section<?php echo isset( $with_sidebar ) ? $with_sidebar : ''; ?>">
     
     <?php
+    /**
+     * Section Main & Sub titles
+    **/
+    $main_title = get_sub_field( 'latest_main_title' );
+    $sub_title = get_sub_field( 'latest_sub_title' );
+
+    if( $main_title || $sub_title ) : ?>
+    <header class="section-header">
+        <div class="section-title title-with-sep ">
+            <h2 class="title"><?php echo $main_title; ?></h2>
+        </div>
+        <?php if ( $sub_title ): ?>
+        <span class="sub-title"><?php echo $sub_title; ?></span>
+        <?php endif; ?>
+    </header>
+    <?php endif; ?>
+    
+    <?php
     // If Sidebar
     if ( get_sub_field( 'latest_posts_sidebar' ) != '' ) :
     ?>
         <div class="grids">
             <div class="grid-8 column-1">
     <?php endif; // End if sidebar ?>
-        
-        
-        <?php
-        /**
-         * Section Main & Sub titles
-        **/
-        $main_title = get_sub_field( 'latest_main_title' );
-        $sub_title = get_sub_field( 'latest_sub_title' );
-
-        if( $main_title || $sub_title ) : ?>
-        <header class="section-header">
-            <div class="section-title title-with-sep ">
-                <h2 class="title"><?php echo $main_title; ?></h2>
-            </div>
-            <?php if ( $sub_title ): ?>
-            <span class="sub-title"><?php echo $sub_title; ?></span>
-            <?php endif; ?>
-        </header>
-        <?php endif; ?>
         
                 
         <?php

@@ -69,13 +69,16 @@ function layout_based_post_image() {
                 || $cat_layout == 'masonry-layout' && $cat_cols != 'columns-size-2'
                 || $cat_layout == 'masonry-layout' && $cat_sidebar == 'cat_sidebar_on'
                
-                || is_tag() ) :
+                || is_day()
+                || is_month()
+                || is_year() ) :
 
                     the_post_thumbnail( 'masonry-size' );
 
             // Masonry two columns, no sidebar
             elseif (   $section_layout == 'masonry-layout'
-                      || $cat_layout == 'masonry-layout' ) :
+                      || $cat_layout == 'masonry-layout'
+                      || is_tag() ) :
 
                     the_post_thumbnail( 'masonry-size-big' );
         

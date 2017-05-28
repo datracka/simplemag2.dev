@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-06 07:40:45+0000\n"
+"PO-Revision-Date: 2016-12-17 16:38:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1239,7 +1239,7 @@ msgstr "Problemas"
 
 #: admin/views/about.php:186
 msgid "We're always grateful for patches from non-regular contributors, in %1$s %2$s, patches from the following people made it in:"
-msgstr "Siempre agradecemos las mejoras que aportan los colaboradores espontáneos, en %1$s %2$s hay aportaciones de las siguientes personas:"
+msgstr "Siempre estamos agradecidos de las mejoras que aportan los colaboradores no regulares, en %1$s %2$s hay aportaciones de las siguientes personas:"
 
 #: admin/views/about.php:185
 msgid "Community contributors"

@@ -2,70 +2,49 @@
 /**
  * Cross-sells
  *
+ * This template can be overridden by copying it to yourtheme/woocommerce/cart/cross-sells.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     1.6.4
+ * @version     3.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit;
 }
 
-global $product, $woocommerce_loop;
+if ( $cross_sells ) : ?>
 
-$crosssells = WC()->cart->get_cross_sells();
-
-if ( sizeof( $crosssells ) == 0 ) return;
-
-$meta_query = WC()->query->get_meta_query();
-
-$args = array(
-	'post_type'           => 'product',
-	'ignore_sticky_posts' => 1,
-	'no_found_rows'       => 1,
-	'posts_per_page'      => apply_filters( 'woocommerce_cross_sells_total', $posts_per_page ),
-	'orderby'             => $orderby,
-	'post__in'            => $crosssells,
-	'meta_query'          => $meta_query
-);
-
-$products = new WP_Query( $args );
-
-$woocommerce_loop['columns'] = apply_filters( 'woocommerce_cross_sells_columns', $columns );
-
-if ( $products->have_posts() ) : ?>
-    
 	<div class="related-posts cross-sells">
 
 		<h3 class="title single-box-title"><?php _e( 'You may be interested in&hellip;', 'woocommerce' ); ?></h3>
-        
-        <div class="grids entries">
-            <div class="carousel">
-				<?php while ( $products->have_posts() ) : $products->the_post(); ?>
-                    
-                    <div class="item">
-                        <figure class="entry-image">
-                          <a href="<?php the_permalink(); ?>">
-                            <?php 
-                            if ( has_post_thumbnail() ) {
-                                the_post_thumbnail( 'masonry-size' );
-                            } elseif( first_post_image() ) { // Set the first image from the editor
-                                echo '<img src="' . first_post_image() . '" class="wp-post-image" />';
-                            } ?>
-                          </a>
-                        </figure>
-                        <header class="entry-header">
-                            <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                            <?php woocommerce_template_loop_price(); ?>
-                        </header>
-                    </div>
-                    
-                <?php endwhile; // end of the loop. ?>
-        	</div>
+
+		<div class="grids grid-layout entries">
+			<div class="carousel">
+
+				<?php foreach ( $cross_sells as $cross_sell ) : ?>
+
+					<?php
+					 	$post_object = get_post( $cross_sell->get_id() );
+
+						setup_postdata( $GLOBALS['post'] =& $post_object );
+
+						wc_get_template_part( 'content', 'product' ); ?>
+
+				<?php endforeach; ?>
+
+			</div>
 		</div>
-        
-	</div><!-- #related-products -->
+
+	</div>
 
 <?php endif;
 
-wp_reset_query();
+wp_reset_postdata();

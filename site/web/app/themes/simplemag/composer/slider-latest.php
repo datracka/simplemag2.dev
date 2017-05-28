@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Posts Slider & Two Latest Posts
  * Page Composer Section
@@ -25,13 +25,13 @@ endif;
 ?>
 
 <section class="wrapper home-section slider-latest">
-    
+
     <div class="grids">
         <div class="grid-8 columns column-1">
 
             <?php
-            /** 
-             * Add posts to slider only if the 'Add To Slider' 
+            /**
+             * Add posts to slider only if the 'Add To Slider'
              * custom field checkbox was checked on the Post edit page
             **/
             $slides_num = get_sub_field( 'slides_to_show' );
@@ -47,11 +47,11 @@ endif;
             ?>
 
             <?php if ( $ti_slider_combined->have_posts() ) : ?>
-                
+
             <div class="global-sliders content-over-image posts-slider <?php echo sanitize_html_class( $section_style_class ); ?>">
-               
+
                 <?php while ( $ti_slider_combined->have_posts() ) : $ti_slider_combined->the_post(); ?>
-                
+
                     <div <?php post_class(); ?>>
                         <figure class="entry-image">
                             <?php if ( has_post_thumbnail() ) { ?>
@@ -77,25 +77,25 @@ endif;
                             </div>
                         </header>
                     </div>
-                    
+
                 <?php endwhile; ?>
 
                 <?php wp_reset_postdata(); ?>
-                
+
             </div><!-- Slider -->
-        
+
             <?php else: ?>
-                
+
             <p class="message">
                 <?php _e( 'Sorry, there are no posts in the slider', 'themetext' ); ?>
             </p>
-                 
+
             <?php endif; ?>
 
         </div><!-- Grid 8 -->
 
         <div class="grid-4 entries columns column-2">
-            
+
             <?php
             // Two latest posts
             if ( get_sub_field ( 'posts_slider_type' ) == 'slider_and_latest' ) :
@@ -124,7 +124,7 @@ endif;
                 );
 
             endif;
-            
+
             if (   get_sub_field ( 'posts_slider_type' ) == 'slider_and_latest'
                 || get_sub_field ( 'posts_slider_type' ) == 'slider_and_featured' ) :
 
@@ -133,8 +133,9 @@ endif;
                     while ( $ti_latest_combined->have_posts() ) : $ti_latest_combined->the_post(); ?>
 
                         <article class="post-item content-over-image content-over-image-tint">
+                            <a class="entry-link" href="<?php the_permalink(); ?>"></a>
                             <figure class="entry-image">
-                                <?php 
+                                <?php
                                 if ( has_post_thumbnail() ) {
                                     the_post_thumbnail( 'rectangle-size' );
                                 } elseif( first_post_image() ) { // Set the first image from the editor
@@ -144,7 +145,6 @@ endif;
                                 }?>
                             </figure>
                             <header class="entry-header">
-                                <a class="entry-link" href="<?php the_permalink(); ?>"></a>
                                 <div class="inner">
                                     <div class="inner-cell">
                                         <h2 class="entry-title">
@@ -166,9 +166,9 @@ endif;
                     </p>
 
                 <?php endif; ?>
-            
+
             <?php endif; ?>
-            
+
         </div><!-- Grid 4 -->
 
     </div><!-- Grids -->

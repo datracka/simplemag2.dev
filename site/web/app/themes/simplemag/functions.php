@@ -25,33 +25,34 @@ require_once ( dirname(__FILE__) . '/admin/theme-options.php' );
  * Add Custom Fields
 **/
 // Path
-function ti_acf_settings_path( $path ) {
-    $path = get_template_directory() . '/admin/acf/';
-    return $path;
+if( ! class_exists('acf') ) {
+
+    function ti_acf_settings_path( $path ) {
+        $path = get_template_directory() . '/admin/acf/';
+        return $path;
+    }
+    add_filter('acf/settings/path', 'ti_acf_settings_path');
+
+    // Dir
+    function ti_acf_settings_dir( $dir ) {
+        $dir = get_template_directory_uri() . '/admin/acf/';
+        return $dir;
+    }
+    add_filter('acf/settings/dir', 'ti_acf_settings_dir');
+
+    // Lite Mode
+    add_filter('acf/settings/show_admin', '__return_false');
+    add_filter('acf/settings/show_updates', '__return_false');
+
+    // Include
+    include_once( get_template_directory() . '/admin/acf/acf.php' );
+
 }
-add_filter('acf/settings/path', 'ti_acf_settings_path');
 
-// Dir 
-function ti_acf_settings_dir( $dir ) {
-    $dir = get_template_directory_uri() . '/admin/acf/';
-    return $dir;
-}
-add_filter('acf/settings/dir', 'ti_acf_settings_dir');
-
-// Hide Updates Note
-add_filter('acf/settings/show_updates', '__return_false');
-
-// Lite Mode
-add_filter('acf/settings/show_admin', '__return_false');
-add_filter('acf/settings/show_updates', '__return_false');
-
-// Include
-include_once( get_template_directory() . '/admin/acf/acf.php' );
-
-// Fields Array
+// ACF Fields Array
 include_once( 'admin/acf-fields/acf-fields.php' );
 
-// Sections Sidebars
+// ACF Post Feed Sidebars
 function ti_register_fields(){
     include_once('admin/acf-fields/add-ons/acf-sidebar-selector/acf-sidebar_selector-v5.php');
 }
@@ -67,7 +68,7 @@ if ( ! isset( $content_width ) ) {
 
 /* Theme Setup */
 function ti_theme_setup() {
-    
+
 	/*
 	 * Let WordPress manage the document title.
 	 * Declare that this theme does not use a hard-coded <title>
@@ -76,14 +77,14 @@ function ti_theme_setup() {
 	 */
 	add_theme_support( 'title-tag' );
 
-    
+
 	/* Register Menus  */
 	register_nav_menus( array(
 		'main_menu' => __( 'Main Menu', 'themetext' ), // Main site menu
 		'secondary_menu' => __( 'Top Strip Menu', 'themetext' ) // Main site menu
 	));
-    
-    
+
+
     /*
 	 * Default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -95,23 +96,23 @@ function ti_theme_setup() {
 		'gallery',
 		'caption',
 	) );
-    
+
 
 	/*
 	 * Enable support for Post Formats.
 	 */
-	add_theme_support( 'post-formats', array( 
-        'video', 
-        'gallery', 
-        'audio', 
-        'quote' 
+	add_theme_support( 'post-formats', array(
+        'video',
+        'gallery',
+        'audio',
+        'quote'
     ) );
 
-    
-    
+
+
 	/* Images */
 	add_theme_support( 'post-thumbnails' );
-    
+
         // Hard crop for grid layouts
         add_image_size( 'rectangle-size', 370, 247, true );
         add_image_size( 'rectangle-size-small', 270, 180, true );
@@ -128,40 +129,46 @@ function ti_theme_setup() {
         // Gallery
         global $ti_option;
         add_image_size( 'gallery-carousel', 9999, $ti_option['site_carousel_height'] );
-    
 
-    
+
+
 	/* Enable post and comment RSS feed links */
 	add_theme_support( 'automatic-feed-links' );
 
-    
+
 	/* Theme localization */
 	load_theme_textdomain( 'themetext', get_template_directory() . '/languages' );
-    
-    
-    
+
+
+
     /* Extra post class for design */
     function post_design_class( $design_class ) {
         if ( ! is_single() ) {
+            global $wp_query;
+            $current_count = $wp_query->current_post + 1;
+            $oddeven = 'odd';
+            if ( $current_count % 2 == 0 ) { $oddeven = 'even'; } else { $oddeven = 'odd'; }
+
             $design_class[] = 'post-item';
+            $design_class[] = 'post-' . $oddeven;
         }
         return $design_class;
     }
     add_filter( 'post_class', 'post_design_class' );
 
-    
-    
+
+
     /* Enable theme gallery if it was turned ON in Theme Options */
     if ( $ti_option['site_custom_gallery'] == true ) {
 	   include_once( 'inc/wp-gallery.php' );
     }
-    
-    
+
+
     /**
      * Post formats for Media Position option in Single Post.
      * Passed into the single.php
      **/
-    function post_format_output() { 
+    function post_format_output() {
         if ( ! get_post_format() ): // Standard
             get_template_part( 'formats/format', 'standard' );
         elseif ( 'gallery' == get_post_format() ): // Gallery
@@ -172,8 +179,8 @@ function ti_theme_setup() {
             get_template_part( 'formats/format', 'audio' );
         endif;
     }
-    
-    
+
+
     /**
      * Calculate to total score for posts with Rating feature is enabled
      *
@@ -248,7 +255,7 @@ locate_template( 'widgets/ti-latest-category-posts.php', true );
 function ti_body_classes( $classes ){
 
 	global $post, $ti_option;
-	
+
 	if ( !is_rtl() ) {
 		$classes[] = 'ltr';
 	}
@@ -258,7 +265,7 @@ function ti_body_classes( $classes ){
 		$page_name = $post->post_name;
 		$classes[] = 'page-'.$page_name;
  	}
-    
+
     // If category have sidebar enabled
 	if ( get_field( 'category_sidebar', 'category_' . get_query_var('cat') ) == 'cat_sidebar_on' ) {
         $classes[] = 'with-sidebar';
@@ -271,7 +278,7 @@ function ti_body_classes( $classes ){
 
 	// Category Name as class name only in single post of given category
 	if ( is_single() ) {
-        
+
 		global $post;
 		$categories = get_the_category( $post->ID );
 		foreach( $categories as $category ) {
@@ -279,9 +286,9 @@ function ti_body_classes( $classes ){
 		}
 
 	}
-    
+
     // Hide/Show top strip
-	if ( $ti_option['site_top_strip'] == 0 ) { 
+	if ( $ti_option['site_top_strip'] == 0 ) {
         $classes[] = 'hide-strip';
     }
 
@@ -290,15 +297,20 @@ function ti_body_classes( $classes ){
         $classes[] = 'top-strip-fixed';
     }
 
+    // Hide/Show main menu
+    if ( $ti_option['site_main_menu'] == 0 ) {
+        $classes[] = 'no-main-menu';
+    }
+
 	// If top strip have white background
-	if ( $ti_option['site_top_strip_bg'] == '#ffffff' ) { 
+	if ( $ti_option['site_top_strip_bg'] == '#ffffff' ) {
         $classes[] = 'color-site-white';
     }
 
     // Check for a layout options: Full Width or Boxed
     if ( $ti_option['site_layout'] == '2' ) {
-        $classes[] = 'layout-boxed'; 
-    } else { 
+        $classes[] = 'layout-boxed';
+    } else {
         $classes[] = 'layout-full';
     }
 
@@ -310,7 +322,7 @@ add_filter( 'body_class', 'ti_body_classes' );
 
 
 /**
- * Add Previous & Next links to a numbered link list 
+ * Add Previous & Next links to a numbered link list
  * of wp_link_pages() if single post is paged
  */
 function ti_wp_link_pages( $args ){
@@ -320,13 +332,13 @@ function ti_wp_link_pages( $args ){
     if ( !$args['next_or_number'] == 'next_and_number' ) {
         return $args;
     }
-	
+
 	// Keep numbers for the main part
     $args['next_or_number'] = 'number';
     if (!$more){
         return $args;
     }
-	
+
 	// If previous page exists
     if( $page-1 ) {
         $args['before'] .= _wp_link_page($page-1) . $args['link_before']. $args['previouspagelink'] . $args['link_after'] . '</a>';
@@ -386,7 +398,12 @@ add_filter( 'excerpt_more', 'ti_excerpt_more' );
 add_filter( 'be_the_content', 'do_shortcode' );
 
 
-    
+/**
+ * Shortcodes support for Text widget
+**/
+add_filter( 'widget_text', 'do_shortcode' );
+
+
 /**
  * Define Five Sidebar areas
  * Magazine for Page Composer, Pages for static pages, Three Footer Sidebars
@@ -394,7 +411,7 @@ add_filter( 'be_the_content', 'do_shortcode' );
 function ti_register_theme_sidebars() {
 
 	if ( function_exists('register_sidebars') ) {
-		
+
 		// Sidebar for blog section of the site
 		register_sidebar(
 		   array(
@@ -410,7 +427,7 @@ function ti_register_theme_sidebars() {
 
 		register_sidebar(
 		   array(
-			'name' => __( 'Pages', 'themetext' ),  
+			'name' => __( 'Pages', 'themetext' ),
 			'id' => 'sidebar-2',
 			'description'   => __( 'Sidebar for static pages', 'themetext' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -422,7 +439,7 @@ function ti_register_theme_sidebars() {
 
 		register_sidebar(
 		   array(
-			'name' => __( 'Footer Area One', 'themetext' ),  
+			'name' => __( 'Footer Area One', 'themetext' ),
 			'id' => 'sidebar-3',
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
@@ -430,7 +447,7 @@ function ti_register_theme_sidebars() {
 			'after_title' => '</h3>',
 		   )
 		);
-		
+
 		register_sidebar(
 		   array(
 			'name' => __( 'Footer Area Two', 'themetext' ),
@@ -441,10 +458,10 @@ function ti_register_theme_sidebars() {
 			'after_title' => '</h3>',
 		   )
 		);
-		
+
 		register_sidebar(
 		   array(
-			'name' => __( 'Footer Area Three', 'themetext' ),  
+			'name' => __( 'Footer Area Three', 'themetext' ),
 			'id' => 'sidebar-5',
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
@@ -452,10 +469,10 @@ function ti_register_theme_sidebars() {
 			'after_title' => '</h3>',
 		   )
 		);
-        
+
         register_sidebar(
 		   array(
-			'name' => __( 'Footer Full Width', 'themetext' ),  
+			'name' => __( 'Footer Full Width', 'themetext' ),
 			'id' => 'sidebar-full-width',
             'description'   => __( 'Can be used for your Instagram feed', 'themetext' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -464,11 +481,11 @@ function ti_register_theme_sidebars() {
 			'after_title' => '</h3>',
 		   )
 		);
-        
+
         if ( class_exists( 'WooCommerce' ) ) {
             register_sidebar(
                array(
-                'name' => __( 'WooCommerce', 'themetext' ),  
+                'name' => __( 'WooCommerce', 'themetext' ),
                 'id' => 'woocommerce-sidebar',
                 'description'   => __( 'Sidebar for Woocommerce', 'themetext' ),
                 'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -478,11 +495,11 @@ function ti_register_theme_sidebars() {
                )
             );
         }
-        
+
         if ( class_exists( 'bbPress' ) ) {
             register_sidebar(
                array(
-                'name' => __( 'bbPress', 'themetext' ),  
+                'name' => __( 'bbPress', 'themetext' ),
                 'id' => 'bbpress-sidebar',
                 'description'   => __( 'Sidebar for bbPress', 'themetext' ),
                 'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -537,21 +554,21 @@ function ti_footer_sidebar_class() {
  * 1. If post was marked as featured
  * 2. If post was added into the homepage slider
 **/
-function admin_post_header_columns($columns) {  
-        
+function admin_post_header_columns($columns) {
+
 	$columns['slider_add'] = "Home Slider";
     $columns['featured_add'] = "Featured";
-      	
+
 	return $columns;
 }
 
 function admin_post_data_row( $column_name, $post_id ) {
-    
+
     $checked = '<span style="color:#00a0d2;font-weight:bold;">&#10003;</span>';
     $deafult = '<span style="color:#ddd;font-weight:bold;">&#10003;</span>';
-    
+
 	switch( $column_name ) {
-        
+
 		case 'featured_add':
 
             if ( get_post_meta( $post_id , 'featured_post_add' , 'true' ) ) {
@@ -561,15 +578,15 @@ function admin_post_data_row( $column_name, $post_id ) {
             }
 
             break;
-        
+
         case 'slider_add':
-        
+
             if ( get_post_meta( $post_id , 'homepage_slider_add' , 'true' ) ) {
                 echo $checked;
             } else {
                 echo $deafult;
             }
-    
+
             break;
 	}
 }
@@ -590,7 +607,7 @@ add_action( 'manage_posts_custom_column', 'admin_post_data_row', 10, 2 );
 if ( class_exists ( 'WooCommerce' ) ) :
 
     /**
-    * Declare WooCommerce support 
+    * Declare WooCommerce support
     */
     add_action( 'after_setup_theme', 'woocommerce_support' );
     function woocommerce_support() {
@@ -607,17 +624,17 @@ if ( class_exists ( 'WooCommerce' ) ) :
     * Disabling WooCommerce Pretty Photo
     */
     // scripts
-    function my_deregister_javascript() {
+    function smwc_deregister_javascript() {
         wp_deregister_script( 'prettyPhoto' );
         wp_deregister_script( 'prettyPhoto-init' );
     }
-    add_action( 'wp_print_scripts', 'my_deregister_javascript', 100 );
+    add_action( 'wp_print_scripts', 'smwc_deregister_javascript', 100 );
 
     // style
-    function my_deregister_styles() {
+    function smwc_deregister_styles() {
         wp_deregister_style( 'woocommerce_prettyPhoto_css' );
     }
-    add_action( 'wp_print_styles', 'my_deregister_styles', 100 );
+    add_action( 'wp_print_styles', 'smwc_deregister_styles', 100 );
 
 
     /**
@@ -666,6 +683,9 @@ if ( class_exists ( 'WooCommerce' ) ) :
     /**
      * Unhook WooCommerce wrappers
      */
+    remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+    remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+
     add_action('woocommerce_before_main_content', 'smwc_wrapper_start', 10);
     add_action('woocommerce_after_main_content', 'smwc_wrapper_end', 10);
 
@@ -680,7 +700,7 @@ if ( class_exists ( 'WooCommerce' ) ) :
 
     /**
      * Disable WooCommerce action
-     */    
+     */
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
 
@@ -702,8 +722,20 @@ if ( class_exists ( 'WooCommerce' ) ) :
     /**
      * Shopping Cart.
      */
-
     require_once( 'woocommerce/inc/woocommerce-side-shopping-cart.php' );
-    //require_once( 'inc/cart-drop-down.php' );
 
 endif;
+
+
+
+/**
+ * Wrap the page content in a container if the page is not a WooCommerce template
+ */
+function entry_content( $content ) {
+	if ( class_exists ( 'WooCommerce' ) && is_really_woocommerce_page () || ! is_page() ) {
+		return $content;
+	} else {
+		return '<article class="entry-content">'.$content.'</article>';
+	}
+}
+add_action('the_content','entry_content');

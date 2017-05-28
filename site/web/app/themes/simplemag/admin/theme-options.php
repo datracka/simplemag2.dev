@@ -1,7 +1,6 @@
 <?php
     /**
-     * ReduxFramework Sample Config File
-     * For full documentation, please visit: http://docs.reduxframework.com/
+     * SimpleMag Options
      */
 
     if ( ! class_exists( 'Redux' ) ) {
@@ -95,8 +94,8 @@
         //Specify if the admin menu should appear or not. Options: menu or submenu (Under appearance only)
         'allow_sub_menu'       => true,
         // Show the sections below the admin menu item or not
-        'menu_title'           => __( 'Theme Options', 'redux-framework-demo' ),
-        'page_title'           => __( 'Theme Options', 'redux-framework-demo' ),
+        'menu_title'           => __( 'Theme Options', 'themetext' ),
+        'page_title'           => __( 'Theme Options', 'themetext' ),
         // You will need to generate a Google API key to use this feature.
         // Please visit: https://developers.google.com/fonts/docs/developer_api#Auth
         'google_api_key'       => 'AIzaSyBCNNmid7eOngJUTGogTM9pd_O_SJUOSJE',
@@ -189,35 +188,7 @@
             ),
         )
     );
-
-
-    $args['share_icons'][] = array(
-        'url'   => 'https://www.facebook.com/ThemesIndep',
-        'title' => 'Like us on Facebook',
-        'icon'  => 'el el-facebook'
-    );
-    $args['share_icons'][] = array(
-        'url'   => 'https://twitter.com/themesindep',
-        'title' => 'Follow us on Twitter',
-        'icon'  => 'el el-twitter'
-    );
     
-    // Panel Intro text -> before the form
-/*
-    if ( ! isset( $args['global_variable'] ) || $args['global_variable'] !== false ) {
-        if ( ! empty( $args['global_variable'] ) ) {
-            $v = $args['global_variable'];
-        } else {
-            $v = str_replace( '-', '_', $args['opt_name'] );
-        }
-        $args['intro_text'] = sprintf( __( '<p>Did you know that Redux sets a global variable for you? To access any of your saved options from within your code you can use your global variable: <strong>$%1$s</strong></p>', 'redux-framework-demo' ), $v );
-    } else {
-        $args['intro_text'] = __( '<p>This text is displayed above the options panel. It isn\'t required, but more info is always better! The intro_text field accepts all HTML.</p>', 'redux-framework-demo' );
-    }
-
-    // Add content after the form.
-    $args['footer_text'] = __( '<p>This text is displayed below the options panel. It isn\'t required, but more info is always better! The footer_text field accepts all HTML.</p>', 'redux-framework-demo' );
-    */
 
     Redux::setArgs( $opt_name, $args );
 
@@ -225,26 +196,6 @@
      * ---> END ARGUMENTS
      */
 
-
-    /*
-     * ---> START HELP TABS
-    $tabs = array(
-        array(
-            'id'      => 'redux-help-tab-1',
-            'title'   => __( 'Theme Information 1', 'redux-framework-demo' ),
-            'content' => __( '<p>This is the tab content, HTML is allowed.</p>', 'redux-framework-demo' )
-        ),
-        array(
-            'id'      => 'redux-help-tab-2',
-            'title'   => __( 'Theme Information 2', 'redux-framework-demo' ),
-            'content' => __( '<p>This is the tab content, HTML is allowed.</p>', 'redux-framework-demo' )
-        )
-    );
-    Redux::setHelpTab( $opt_name, $tabs );
-    // Set the help sidebar
-    $content = __( '<p>This is the sidebar content, HTML is allowed.</p>', 'redux-framework-demo' );
-    Redux::setHelpSidebar( $opt_name, $content );
-    */
 
     
 
@@ -255,30 +206,30 @@
     // ---> Header
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-eye-open',
-        'title'     => __('Header', 'redux-framework-demo'),
-        'heading'   => __('Site Header Options', 'redux-framework-demo'),
+        'title'     => __('Header', 'themetext'),
+        'heading'   => __('Site Header Options', 'themetext'),
         'fields'    => array(
             
             /* Top Strip */
             array(
                 'id'        => 'site_top_strip_start',
                 'type'      => 'section',
-                'title'     => __('Top Strip', 'redux-framework-demo'),
+                'title'     => __('Top Strip', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'site_top_strip',
                         'type'      => 'switch',
-                        'title'     => __('Strip Visibility', 'redux-framework-demo'),
-                        'subtitle'  => __('Enable or Disable the top strip', 'redux-framework-demo'),
+                        'title'     => __('Strip Visibility', 'themetext'),
+                        'subtitle'  => __('Enable or Disable the top strip', 'themetext'),
                         'default'   => 1,
                     ),
                     array(
                         'id'        => 'site_top_strip_logo',
                         'type'      => 'media',
                         'required'  => array('site_top_strip', '=', '1'),
-                        'title'     => __('Logo', 'redux-framework-demo'),
-                        'subtitle'  => __('Upload a logo to be shown in top strip', 'redux-framework-demo')
+                        'title'     => __('Logo', 'themetext'),
+                        'subtitle'  => __('Upload a logo to be shown in top strip', 'themetext')
                     ),
             array(
                 'id'        => 'site_top_strip_end',
@@ -291,22 +242,22 @@
             array(
                 'id'        => 'main_logo_start',
                 'type'      => 'section',
-                'title'     => __('Main Logo Area', 'redux-framework-demo'),
+                'title'     => __('Main Logo Area', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'site_main_area',
                         'type'      => 'switch',
-                        'title'     => __('Area Visibility', 'redux-framework-demo'),
-                        'subtitle'  => __('Enable or Disable main logo area', 'redux-framework-demo'),
+                        'title'     => __('Area Visibility', 'themetext'),
+                        'subtitle'  => __('Enable or Disable main logo area', 'themetext'),
                         'default'   => 1,
                     ),
                     array(
                         'id'        => 'site_logo',
                         'type'      => 'media',
                         'required'  => array('site_main_area', '=', '1'),
-                        'title'     => __('Main Logo', 'redux-framework-demo'),
-                        'subtitle'  => __('Upload your site logo. Default logo will be used unless you upload your own', 'redux-framework-demo'),
+                        'title'     => __('Main Logo', 'themetext'),
+                        'subtitle'  => __('Upload your site logo. Default logo will be used unless you upload your own', 'themetext'),
                         'default'   => array(
                             'url'   => get_template_directory_uri() .'/images/logo.png',
                             'width' => '367',
@@ -317,16 +268,16 @@
                         'id'        => 'site_tagline',
                         'type'      => 'switch',
                         'required'  => array('site_main_area', '=', '1'),
-                        'title'     => __('Tagline', 'redux-framework-demo'),
-                        'subtitle'  => __('Enable or Disable the tagline under the logo', 'redux-framework-demo'),
+                        'title'     => __('Tagline', 'themetext'),
+                        'subtitle'  => __('Enable or Disable the tagline under the logo', 'themetext'),
                         'default'   => true,
                     ),
                     array(
                         'id'        => 'site_header',
                         'type'      => 'image_select',
                         'required'  => array('site_main_area', '=', '1'),
-                        'title'     => __('Area Type', 'redux-framework-demo'),
-                        'subtitle'  => __('1. Logo<br />2. Logo, social profiles and search<br />3. Logo and ad unit. To add the ad unit click on the Ad Units tab.', 'redux-framework-demo'),
+                        'title'     => __('Area Type', 'themetext'),
+                        'subtitle'  => __('1. Logo<br />2. Logo, social profiles and search<br />3. Logo and ad unit. To add the ad unit click on the Ad Units tab.', 'themetext'),
                         'options'   => array(
                             'header_default' => array('img' => get_template_directory_uri() .'/admin/images/to-icon-logo-centered.png'),
                             'header_search' => array('img' => get_template_directory_uri() .'/admin/images/to-icon-logo-social-search.png'),
@@ -345,29 +296,29 @@
             array(
                 'id'        => 'site_main_menu_start',
                 'type'      => 'section',
-                'title'     => __('Main Menu', 'redux-framework-demo'),
+                'title'     => __('Main Menu', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'site_main_menu',
                         'type'      => 'switch',
-                        'title'     => __('Main Menu', 'redux-framework-demo'),
-                        'subtitle'  => __('Enable or Disable the main menu', 'redux-framework-demo'),
+                        'title'     => __('Main Menu', 'themetext'),
+                        'subtitle'  => __('Enable or Disable the main menu', 'themetext'),
                         'default'   => 1,
                     ),
                     array(
                         'id'        => 'site_mega_menu',
                         'type'      => 'switch',
                         'required'  => array('site_main_menu', '=', '1'),
-                        'title'     => __('Mega Menu', 'redux-framework-demo'),
-                        'subtitle'  => __('Enable or Disable the mega menu', 'redux-framework-demo'),
+                        'title'     => __('Mega Menu', 'themetext'),
+                        'subtitle'  => __('Enable or Disable the mega menu', 'themetext'),
                         'default'   => 1,
                     ),
                     array(
                         'id'        => 'site_mega_menu_type',
                         'type'      => 'button_set',
-                        'title'     => __('Mega Menu Type', 'redux-framework-demo'),
-                        'subtitle'  => __('Select between ajax or regular menu', 'redux-framework-demo'),
+                        'title'     => __('Mega Menu Type', 'themetext'),
+                        'subtitle'  => __('Select between ajax or regular menu', 'themetext'),
                         'options'   => array(
                             'menu_ajax' => 'Ajax',
                             'menu_regular' => 'Regular'
@@ -384,15 +335,15 @@
             array(
                 'id'        => 'header_features_start',
                 'type'      => 'section',
-                'title'     => __('Header Features', 'redux-framework-demo'),
-                'subtitle'      => __('All options below are applicable for top strip and main logo area', 'redux-framework-demo'),
+                'title'     => __('Header Features', 'themetext'),
+                'subtitle'      => __('All options below are applicable for top strip and main logo area', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'site_fixed_menu',
                         'type'      => 'image_select',
-                        'title'     => __('Fixed Element', 'redux-framework-demo'),
-                        'subtitle'  => __('Select header fixed element:<br />None, Top Strip, Main Menu', 'redux-framework-demo'),
+                        'title'     => __('Fixed Element', 'themetext'),
+                        'subtitle'  => __('Select header fixed element:<br />None, Top Strip, Main Menu', 'themetext'),
                         'options'   => array(
                             '1' => array('img' => get_template_directory_uri() .'/admin/images/to-icon-fixed-none.png'),
                             '2' => array('img' => get_template_directory_uri() .'/admin/images/to-icon-fixed-top-menu.png'),
@@ -403,20 +354,20 @@
                     array(
                         'id'        => 'site_search_visibility',
                         'type'      => 'switch',
-                        'title'     => __('Search Visibility', 'redux-framework-demo'),
-                        'subtitle'  => __('Enable or Disable the search', 'redux-framework-demo'),
+                        'title'     => __('Search Visibility', 'themetext'),
+                        'subtitle'  => __('Enable or Disable the search', 'themetext'),
                         'default'   => true,
                     ),
                     array(
                         'id'        => 'top_social_profiles',
                         'type'      => 'switch',
-                        'title'     => __('Social Profiles', 'redux-framework-demo'),
-                        'subtitle'  => __('Enable or Disable top strip socical profiles', 'redux-framework-demo'),
+                        'title'     => __('Social Profiles', 'themetext'),
+                        'subtitle'  => __('Enable or Disable top strip socical profiles', 'themetext'),
                     ),
                     array(
                         'id'        => 'social_profile_url',
-                        'title'     => __('Social Profiles URLs', 'redux-framework-demo'),
-                        'subtitle'  => __('Enter full URLs of your social profiles', 'redux-framework-demo'),
+                        'title'     => __('Social Profiles URLs', 'themetext'),
+                        'subtitle'  => __('Enter full URLs of your social profiles', 'themetext'),
                         'required'  => array('top_social_profiles', '=', '1'),
                         'type'      => 'text',
                         'placeholder'      => '',
@@ -468,51 +419,51 @@
 
     // ---> General Settings
     Redux::setSection( $opt_name, array(
-        'title'  => __('General Settings', 'redux-framework-demo'),
+        'title'  => __('General Settings', 'themetext'),
         'icon'   => 'el-icon-cogs',
         'fields' => array(
             array(
                 'id'        => 'site_sidebar_fixed',
                 'type'      => 'switch',
-                'title'     => __('Fixed Sidebar', 'redux-framework-demo'),
-                'subtitle'  => __('Make sidebar fixed site wide', 'redux-framework-demo'),
+                'title'     => __('Fixed Sidebar', 'themetext'),
+                'subtitle'  => __('Make sidebar fixed site wide', 'themetext'),
                 'default'   => false,
             ),
             array(
                 'id'        => 'site_custom_gallery',
                 'type'      => 'switch',
-                'title'     => __('Custom Gallery', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable theme custom WordPress gallery', 'redux-framework-demo'),
+                'title'     => __('Custom Gallery', 'themetext'),
+                'subtitle'  => __('Enable or Disable theme custom WordPress gallery', 'themetext'),
                 'default'   => false,
             ),
             array(
                 'id'        => 'site_carousel_height',
                 'type'      => 'text',
-                'title'     => __('Gallery Carousel Height', 'redux-framework-demo'),
-                'subtitle'  => __('Set the height of the gallery carousel. Applies to Posts Carousel section and Gallery Format post.', 'redux-framework-demo'),
-                'desc'      => __('After changing the height you need to run the Force Regenerate Thumbnails plugin.', 'redux-framework-demo'),
+                'title'     => __('Gallery Carousel Height', 'themetext'),
+                'subtitle'  => __('Set the height of the gallery carousel. Applies to Posts Carousel section and Gallery Format post.', 'themetext'),
+                'desc'      => __('After changing the height you need to run the Force Regenerate Thumbnails plugin.', 'themetext'),
                 'validate'  => 'numeric',
                 'default'   => '580',
             ),
             array(
                 'id'        => 'site_page_comments',
                 'type'      => 'switch',
-                'title'     => __('Comments in static pages', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable comments in all static pages.', 'redux-framework-demo'),
+                'title'     => __('Comments in static pages', 'themetext'),
+                'subtitle'  => __('Enable or Disable comments in all static pages.', 'themetext'),
                 'default'   => false,
             ),
             array(
                 'id'        => 'full_width_widget',
                 'type'      => 'switch',
-                'title'     => __('Footer Full Width Widget', 'redux-framework-demo'),
-                'subtitle'  => __('Footer widget full browser width', 'redux-framework-demo'),
+                'title'     => __('Footer Full Width Widget', 'themetext'),
+                'subtitle'  => __('Footer widget full browser width', 'themetext'),
                 'default'   => true,
             ),
             array(
                 'id'        => 'copyright_text',
                 'type'      => 'textarea',
-                'title'     => __('Footer Text', 'redux-framework-demo'),
-                'subtitle'  => __('Your site footer copyright text', 'redux-framework-demo'),
+                'title'     => __('Footer Text', 'themetext'),
+                'subtitle'  => __('Your site footer copyright text', 'themetext'),
                 'default'   => 'Powered by WordPress. <a href="http://www.themesindep.com">Created by ThemesIndep</a>',
             ),
         )
@@ -521,13 +472,13 @@
     // ---> Typography
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-fontsize',
-        'title'     => __('Typography', 'redux-framework-demo'),
+        'title'     => __('Typography', 'themetext'),
         'fields'    => array(
             
              array(
                 'id'        => 'typography_info',
                 'type'      => 'info',
-                'desc'      => __('Standard System Fonts and Google Webfonts are avaialble in each Font Family dropdown', 'redux-framework-demo')
+                'desc'      => __('Standard System Fonts and Google Webfonts are avaialble in each Font Family dropdown', 'themetext')
              ),
             
             
@@ -535,15 +486,15 @@
             array(
                 'id'        => 'menu_font_start',
                 'type'      => 'section',
-                'title'     => __('Site Menus', 'redux-framework-demo'),
+                'title'     => __('Site Menus', 'themetext'),
                 'indent'    => false,
             ),
             
                     array(
                         'id'        => 'site_menus_font',
                         'type'      => 'typography',
-                        'title'     => __('Menus', 'redux-framework-demo'),
-                        'subtitle'  => __('Specify font style for top strip secondary and main menus', 'redux-framework-demo'),
+                        'title'     => __('Menus', 'themetext'),
+                        'subtitle'  => __('Specify font style for top strip secondary and main menus', 'themetext'),
                         'google'    => true,
                         'color'     => false,
                         'text-align' => false,
@@ -559,8 +510,8 @@
                     array(
                         'id'        => 'top_menu_font_size',
                         'type'      => 'typography',
-                        'title'     => __('Top Strip', 'redux-framework-demo'),
-                        'subtitle'  => __('Top strip menu font size', 'redux-framework-demo'),
+                        'title'     => __('Top Strip', 'themetext'),
+                        'subtitle'  => __('Top strip menu font size', 'themetext'),
                         'google'    => false,
                         'font-family' => false,
                         'font-style' => false,
@@ -576,8 +527,8 @@
                     array(
                         'id'        => 'main_menu_font_size',
                         'type'      => 'typography',
-                        'title'     => __('Main Menu', 'redux-framework-demo'),
-                        'subtitle'  => __('Main menu font size', 'redux-framework-demo'),
+                        'title'     => __('Main Menu', 'themetext'),
+                        'subtitle'  => __('Main menu font size', 'themetext'),
                         'google'    => false,
                         'font-family' => false,
                         'font-style' => false,
@@ -602,15 +553,15 @@
             array(
                 'id'        => 'titles_font_start',
                 'type'      => 'section',
-                'title'     => __('Titles and Heading', 'redux-framework-demo'),
+                'title'     => __('Titles and Heading', 'themetext'),
                 'indent'    => false,
             ),
             
                     array(
                         'id'        => 'font_titles',
                         'type'      => 'typography',
-                        'title'     => __('Titles and Headings', 'redux-framework-demo'),
-                        'subtitle'  => __('Specify font style for titles and headings', 'redux-framework-demo'),
+                        'title'     => __('Titles and Headings', 'themetext'),
+                        'subtitle'  => __('Specify font style for titles and headings', 'themetext'),
                         'google'    => true,
                         'color'     => false,
                         'text-align' => false,
@@ -628,8 +579,8 @@
                     array(
                         'id'        => 'titles_size',
                         'type'      => 'typography',
-                        'title'     => __('Composer Main Titles Size', 'redux-framework-demo'),
-                        'subtitle'  => __('Specify sections titles size', 'redux-framework-demo'),
+                        'title'     => __('Composer Main Titles Size', 'themetext'),
+                        'subtitle'  => __('Specify sections titles size', 'themetext'),
                         'google'    => false,
                         'font-family' => false,
                         'font-style' => false,
@@ -647,8 +598,8 @@
                     array(
                         'id'        => 'post_item_titles_size',
                         'type'      => 'typography',
-                        'title'     => __('Post Item', 'redux-framework-demo'),
-                        'subtitle'  => __('Apllies to: composer, posts page, category or other archives', 'redux-framework-demo'),
+                        'title'     => __('Post Item', 'themetext'),
+                        'subtitle'  => __('Apllies to: composer, posts page, category or other archives', 'themetext'),
                         'google'    => false,
                         'font-family' => false,
                         'font-style' => false,
@@ -666,8 +617,8 @@
                     array(
                         'id'        => 'single_font_size',
                         'type'      => 'typography',
-                        'title'     => __('Single Post and Page', 'redux-framework-demo'),
-                        'subtitle'  => __('Titles size for Single Post and Static Page', 'redux-framework-demo'),
+                        'title'     => __('Single Post and Page', 'themetext'),
+                        'subtitle'  => __('Titles size for Single Post and Static Page', 'themetext'),
                         'google'    => false,
                         'font-family' => false,
                         'font-style' => false,
@@ -683,8 +634,8 @@
                     array(
                         'id'        => 'post_title_style',
                         'type'      => 'button_set',
-                        'title'     => __('Titles Style', 'redux-framework-demo'),
-                        'subtitle'  => __('Titles styling. Applies to Post Item, Single Post and Static Page', 'redux-framework-demo'),
+                        'title'     => __('Titles Style', 'themetext'),
+                        'subtitle'  => __('Titles styling. Applies to Post Item, Single Post and Static Page', 'themetext'),
                         'options'   => array( 
                             'capitalize' => 'Capitalize',
                             'uppercase' => 'Uppercase',
@@ -704,14 +655,14 @@
             array(
                 'id'        => 'body_font_start',
                 'type'      => 'section',
-                'title'     => __('Editor Text', 'redux-framework-demo'),
+                'title'     => __('Editor Text', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'font_text',
                         'type'      => 'typography',
-                        'title'     => __('Font Family', 'redux-framework-demo'),
-                        'subtitle'  => __('Editor text font familty', 'redux-framework-demo'),
+                        'title'     => __('Font Family', 'themetext'),
+                        'subtitle'  => __('Editor text font familty', 'themetext'),
                         'google'    => true,
                         'color'     => false,
                         'text-align' => false,
@@ -726,8 +677,8 @@
                     array(
                         'id'        => 'entry_content_font',
                         'type'      => 'typography',
-                        'title'     => __('Font Size', 'redux-framework-demo'),
-                        'subtitle'  => __('Editor text font size', 'redux-framework-demo'),
+                        'title'     => __('Font Size', 'themetext'),
+                        'subtitle'  => __('Editor text font size', 'themetext'),
                         'google'    => true,
                         'font-family' => false,
                         'font-style' => false,
@@ -753,20 +704,20 @@
     // ---> Design Options
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-magic',
-        'title'     => __('Design Options', 'redux-framework-demo'),
+        'title'     => __('Design Options', 'themetext'),
         'fields'    => array(
             array(
                 'id'        => 'site_body_start',
                 'type'      => 'section',
-                'title'     => __('Main Site Options', 'redux-framework-demo'),
+                'title'     => __('Main Site Options', 'themetext'),
                 'indent'    => false,
             ),
                 /* Text Alignment */
                 array(
                     'id'        => 'text_alignment',
                     'type'      => 'image_select',
-                    'title'     => __('Text alignment', 'redux-framework-demo'),
-                    'subtitle'  => __('Select your site text alignment. Centered or Left.', 'redux-framework-demo'),
+                    'title'     => __('Text alignment', 'themetext'),
+                    'subtitle'  => __('Select your site text alignment. Centered or Left.', 'themetext'),
                     'options'   => array(
                         '1' => array('img' => get_template_directory_uri() .'/admin/images/to-icon-align-center.png'),
                         '2' => array('img' => get_template_directory_uri() .'/admin/images/to-icon-align-left.png'),
@@ -778,8 +729,8 @@
                 array(
                     'id'        => 'site_layout',
                     'type'      => 'image_select',
-                    'title'     => __('Site Layout', 'redux-framework-demo'),
-                    'subtitle'  => __('Select site layout. Fullwidth or Boxed.', 'redux-framework-demo'),
+                    'title'     => __('Site Layout', 'themetext'),
+                    'subtitle'  => __('Select site layout. Fullwidth or Boxed.', 'themetext'),
                     'options'   => array(
                         '1' => array('img' => get_template_directory_uri() .'/admin/images/to-icon-layout-full.png'),
                         '2' => array('img' => get_template_directory_uri() .'/admin/images/to-icon-layout-boxed.png'),
@@ -791,8 +742,8 @@
                 array(
                     'id'        => 'site_body_bg',
                     'type'      => 'background',
-                    'title'     => __('Body Background', 'redux-framework-demo'),
-                    'subtitle'  => __('Pick a body background color or upload an image', 'redux-framework-demo'),
+                    'title'     => __('Body Background', 'themetext'),
+                    'subtitle'  => __('Pick a body background color or upload an image', 'themetext'),
                     'default'  => array('background-color' => '#fff'),
                     'required' => array('site_layout', '=', '2'),
                     'output'  => array('background-color' => 'body')
@@ -809,22 +760,22 @@
             array(
                 'id'        => 'main_colors_start',
                 'type'      => 'section',
-                'title'     => __('Main Colors', 'redux-framework-demo'),
+                'title'     => __('Main Colors', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'main_site_color',
                         'type'      => 'color',
-                        'title'     => __('Main Color', 'redux-framework-demo'),
-                        'subtitle'  => __('Color for comments avatar, ratings, etc.', 'redux-framework-demo'),
+                        'title'     => __('Main Color', 'themetext'),
+                        'subtitle'  => __('Color for comments avatar, ratings, etc.', 'themetext'),
                         'default'   => '#ffcc0d',
                         'output'    => array( 'background-color' => '.score-line, .rating-total-indicator .sides span, .widget_ti_most_commented span', 'border-color' => '.comment-list .bypostauthor .avatar, .post-item .content-loading .load-media-content:before, .media-posts .content-loading .load-media-content:before, .post-item .content-loading .load-media-content:after, .media-posts .content-loading .load-media-content:after', 'border-top-color' => '.widget_ti_most_commented span i:before' ),
                     ),
                     array(
                         'id'        => 'secondary_site_color',
                         'type'      => 'color',
-                        'title'     => __('Secondary Color', 'redux-framework-demo'),
-                        'subtitle'  => __('Color for rating bar text, etc.', 'redux-framework-demo'),
+                        'title'     => __('Secondary Color', 'themetext'),
+                        'subtitle'  => __('Color for rating bar text, etc.', 'themetext'),
                         'default'   => '#000',
                         'output'    => array( 'color' => '.score-line span i, .widget_ti_most_commented span i' ),
                     ),
@@ -839,14 +790,14 @@
             array(
                 'id'        => 'mobile_color_start',
                 'type'      => 'section',
-                'title'     => __('Mobile Menu', 'redux-framework-demo'),
+                'title'     => __('Mobile Menu', 'themetext'),
                 'indent'    => false,
             ),
                 array(
                     'id'        => 'mobile_menu_color',
                     'type'      => 'button_set',
-                    'title'     => __('Color', 'redux-framework-demo'),
-                    'subtitle'  => __('Select mobile menu color', 'redux-framework-demo'),
+                    'title'     => __('Color', 'themetext'),
+                    'subtitle'  => __('Select mobile menu color', 'themetext'),
                     'options'   => array( 
                         'mobilewhite' => 'White',
                         'mobiledark' => 'Dark'
@@ -865,14 +816,14 @@
             array(
                 'id'        => 'header_colors_start',
                 'type'      => 'section',
-                'title'     => __('Header', 'redux-framework-demo'),
+                'title'     => __('Header', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'header_site_color',
                         'type'      => 'color',
-                        'title'     => __('Header Background', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick the header background color', 'redux-framework-demo'),
+                        'title'     => __('Header Background', 'themetext'),
+                        'subtitle'  => __('Pick the header background color', 'themetext'),
                         'default'   => '#ffffff',
                         'output'    => array( 'background-color' => '#masthead' ),
                     ),
@@ -886,22 +837,22 @@
             array(
                 'id'        => 'top_strip_start',
                 'type'      => 'section',
-                'title'     => __('Top Strip', 'redux-framework-demo'),
+                'title'     => __('Top Strip', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'site_top_strip_bg',
                         'type'      => 'color',
-                        'title'     => __('Background', 'redux-framework-demo'),
-                        'subtitle'  => __('Top strip background color.', 'redux-framework-demo'),
+                        'title'     => __('Background', 'themetext'),
+                        'subtitle'  => __('Top strip background color.', 'themetext'),
                         'default'   => '#000',
                         'output'  => array( 'background-color' => '.top-strip, .secondary-menu .sub-menu, .top-strip .search-form input[type="text"], .top-strip .social li ul' ),
                     ),
                     array(
                         'id'        => 'site_top_strip_bottom_border',
                         'type'      => 'border',
-                        'title'     => __('Bottom Border', 'redux-framework-demo'),
-                        'subtitle'  => __('Bottom border color', 'redux-framework-demo'),
+                        'title'     => __('Bottom Border', 'themetext'),
+                        'subtitle'  => __('Bottom border color', 'themetext'),
                         'output'  => array('.top-strip'),
                         'all'       => false,
                         'right'     => false,
@@ -916,8 +867,8 @@
                     array(
                         'id'        => 'site_top_strip_links',
                         'type'      => 'link_color',
-                        'title'     => __('Menu Links', 'redux-framework-demo'),
-                        'subtitle'  => __('Menu links color', 'redux-framework-demo'),
+                        'title'     => __('Menu Links', 'themetext'),
+                        'subtitle'  => __('Menu links color', 'themetext'),
                         'output'  => array('.secondary-menu a'),
                         'active'    => false,
                         'default'   => array(
@@ -928,8 +879,8 @@
                     array(
                         'id'        => 'site_top_strip_social',
                         'type'      => 'color',
-                        'title'     => __('Social Icons', 'redux-framework-demo'),
-                        'subtitle'  => __('Social icons styling', 'redux-framework-demo'),
+                        'title'     => __('Social Icons', 'themetext'),
+                        'subtitle'  => __('Social icons styling', 'themetext'),
                         'default'   => '#8c919b',
                         'output'    => array( 'color' => '.top-strip .social li a' ),
                     ),
@@ -943,22 +894,22 @@
             array(
                 'id'        => 'main_menu_start',
                 'type'      => 'section',
-                'title'     => __('Main Menu', 'redux-framework-demo'),
+                'title'     => __('Main Menu', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'main_menu_color',
                         'type'      => 'color',
-                        'title'     => __('Background', 'redux-framework-demo'),
-                        'subtitle'  => __('Main menu background color', 'redux-framework-demo'),
+                        'title'     => __('Background', 'themetext'),
+                        'subtitle'  => __('Main menu background color', 'themetext'),
                         'default'   => '#fff',
                         'output'    => array( 'background-color' => '.main-menu-container,.sticky-active .main-menu-fixed' ),
                     ),
                     array(
                         'id'        => 'main_menu_links_color',
                         'type'      => 'link_color',
-                        'title'     => __('Menu Links', 'redux-framework-demo'),
-                        'subtitle'  => __('Main menu links color', 'redux-framework-demo'),
+                        'title'     => __('Menu Links', 'themetext'),
+                        'subtitle'  => __('Main menu links color', 'themetext'),
                         'output'  => array('.main-menu > ul > li'),
                         'active'    => false,
                         'default'   => array(
@@ -969,16 +920,16 @@
                     array(
                         'id'        => 'main_menu_separator',
                         'type'      => 'color',
-                        'title'     => __('Links Separator', 'redux-framework-demo'),
-                        'subtitle'  => __('Links seprator color', 'redux-framework-demo'),
+                        'title'     => __('Links Separator', 'themetext'),
+                        'subtitle'  => __('Links seprator color', 'themetext'),
                         'default'   => '#eee',
                         'output'    => array( 'color' => '.main-menu > ul > li > a > span:after' ),
                     ),
                     array(
                         'id'        => 'main_menu_top_border',
                         'type'      => 'border',
-                        'title'     => __('Top Border', 'redux-framework-demo'),
-                        'subtitle'  => __('Main Menu top border', 'redux-framework-demo'),
+                        'title'     => __('Top Border', 'themetext'),
+                        'subtitle'  => __('Main Menu top border', 'themetext'),
                         'output'  => array('.main-menu-container'),
                         'all'       => false,
                         'right'     => false,
@@ -993,8 +944,8 @@
                     array(
                         'id'        => 'main_menu_bottom_border',
                         'type'      => 'border',
-                        'title'     => __('Bottom Border', 'redux-framework-demo'),
-                        'subtitle'  => __('Main Menu bottom border', 'redux-framework-demo'),
+                        'title'     => __('Bottom Border', 'themetext'),
+                        'subtitle'  => __('Main Menu bottom border', 'themetext'),
                         'output'  => array('.main-menu-container'),
                         'all'       => false,
                         'right'     => false,
@@ -1016,7 +967,7 @@
             array(
                 'id'        => 'main_dropdown_start',
                 'type'      => 'section',
-                'title'     => __('Main Menu Dropdown', 'redux-framework-demo'),
+                'title'     => __('Main Menu Dropdown', 'themetext'),
                 'indent'    => false,
             ),
             
@@ -1024,8 +975,8 @@
                     array(
                         'id'        => 'main_sub_menu_pointer',
                         'type'      => 'color',
-                        'title'     => __('Pointer &amp; Top Border', 'redux-framework-demo'),
-                        'subtitle'  => __('Pointer and top border color', 'redux-framework-demo'),
+                        'title'     => __('Pointer &amp; Top Border', 'themetext'),
+                        'subtitle'  => __('Pointer and top border color', 'themetext'),
                         'default'   => '#ffcc0d',
                     ),
 
@@ -1033,16 +984,16 @@
                     array(
                         'id'        => 'main_sub_bg_left',
                         'type'      => 'color',
-                        'title'     => __('Background Color', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick menu background color', 'redux-framework-demo'),
+                        'title'     => __('Background Color', 'themetext'),
+                        'subtitle'  => __('Pick menu background color', 'themetext'),
                         'default'   => '#000',
                         'output'  => array( 'background-color' => '.main-menu .sub-menu' ),
                     ),
                     array(
                         'id'        => 'main_sub_links_left',
                         'type'      => 'link_color',
-                        'title'     => __('Links Color', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick menu links color', 'redux-framework-demo'),
+                        'title'     => __('Links Color', 'themetext'),
+                        'subtitle'  => __('Pick menu links color', 'themetext'),
                         'output'  => array('.main-menu .sub-menu li a, .main-menu .mega-menu-container .mega-menu-posts-title'),
                         'active'    => false,
                         'default'   => array(
@@ -1061,21 +1012,21 @@
             array(
                 'id'        => 'titles_bg_start',
                 'type'      => 'section',
-                'title'     => __('Title Lines', 'redux-framework-demo'),
+                'title'     => __('Title Lines', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'titles_background_switch',
                         'type'      => 'switch',
-                        'title'     => __('On/Off', 'redux-framework-demo'),
-                        'subtitle'  => __('Turn the lines image on or off', 'redux-framework-demo'),
+                        'title'     => __('On/Off', 'themetext'),
+                        'subtitle'  => __('Turn the lines image on or off', 'themetext'),
                         'default'   => '1',
                     ),
                     array(
                         'id'        => 'titles_background_image',
                         'type'      => 'switch',
-                        'title'     => __('Lines Type', 'redux-framework-demo'),
-                        'subtitle'  => __('Use deafult lines or upload custom', 'redux-framework-demo'),
+                        'title'     => __('Lines Type', 'themetext'),
+                        'subtitle'  => __('Use deafult lines or upload custom', 'themetext'),
                         'required'  => array('titles_background_switch', '=', '1'),
                         'default'   => '1',
                         'on'        => 'Use Default',
@@ -1086,8 +1037,8 @@
                         'type'      => 'media',
                         'url'       => true,
                         'required'  => array('titles_background_image', '=', '0'),
-                        'title'     => __('Upload Custom', 'redux-framework-demo'),
-                        'subtitle'  => __('Upload custom lines image', 'redux-framework-demo'),
+                        'title'     => __('Upload Custom', 'themetext'),
+                        'subtitle'  => __('Upload custom lines image', 'themetext'),
                         'default'   => '',
                     ),
             array(
@@ -1100,22 +1051,22 @@
             array(
                 'id'        => 'slider_tint_start',
                 'type'      => 'section',
-                'title'     => __('Slider', 'redux-framework-demo'),
+                'title'     => __('Slider', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'slider_tint',
                         'type'      => 'color',
-                        'title'     => __('Background', 'redux-framework-demo'),
-                        'subtitle'  => __('Slider background color', 'redux-framework-demo'),
+                        'title'     => __('Background', 'themetext'),
+                        'subtitle'  => __('Slider background color', 'themetext'),
                         'default'   => '#000',
                         'output'    => array( 'background-color' => '.modern .content-over-image-tint .entry-image:before, .modern .content-over-image-tint.full-width-image:before' ),
                     ),
                     array(
                         'id'            => 'slider_tint_strength',
                         'type'          => 'slider',
-                        'title'         => __('Tint strength', 'redux-framework-demo'),
-                        'subtitle'      => __('Slider tint regular strength', 'redux-framework-demo'),
+                        'title'         => __('Tint strength', 'themetext'),
+                        'subtitle'      => __('Slider tint regular strength', 'themetext'),
                         'default'       => .1,
                         'min'           => 0,
                         'step'          => .1,
@@ -1126,8 +1077,8 @@
                     array(
                         'id'            => 'slider_tint_strength_hover',
                         'type'          => 'slider',
-                        'title'         => __('Tint strength hover', 'redux-framework-demo'),
-                        'subtitle'      => __('Slider tint regular strength mouse over', 'redux-framework-demo'),
+                        'title'         => __('Tint strength hover', 'themetext'),
+                        'subtitle'      => __('Slider tint strength mouse over', 'themetext'),
                         'default'       => .7,
                         'min'           => 0,
                         'step'          => .1,
@@ -1145,14 +1096,14 @@
             array(
                 'id'        => 'sidebar_border_start',
                 'type'      => 'section',
-                'title'     => __('Sidebar', 'redux-framework-demo'),
+                'title'     => __('Sidebar', 'themetext'),
                 'indent'    => false,
             ),
                 array(
                     'id'        => 'sidebar_border',
                     'type'      => 'border',
-                    'title'     => __('Sidebar Border', 'redux-framework-demo'),
-                    'subtitle'  => __('Select sidebar border styling', 'redux-framework-demo'),
+                    'title'     => __('Sidebar Border', 'themetext'),
+                    'subtitle'  => __('Select sidebar border styling', 'themetext'),
                     'default'   => array(
                         'border-color'  => '#000',
                         'border-style'  => 'solid',
@@ -1174,30 +1125,30 @@
             array(
                 'id'        => 'slide_dock_start',
                 'type'      => 'section',
-                'title'     => __('Single Post Slide Dock', 'redux-framework-demo'),
+                'title'     => __('Single Post Slide Dock', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'slide_dock_color',
                         'type'      => 'color',
-                        'title'     => __('Background', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for the backgound', 'redux-framework-demo'),
+                        'title'     => __('Background', 'themetext'),
+                        'subtitle'  => __('Pick a color for the backgound', 'themetext'),
                         'default'   => '#ffffff',
                         'output'    => array( 'background-color' => '.slide-dock' ),
                     ),
                     array(
                         'id'        => 'slide_dock_elements',
                         'type'      => 'color',
-                        'title'     => __('Text Elements', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for dock title and post text', 'redux-framework-demo'),
+                        'title'     => __('Text Elements', 'themetext'),
+                        'subtitle'  => __('Pick a color for dock title and post text', 'themetext'),
                         'default'   => '#000000',
                         'output'    => array( 'color' => '.slide-dock h3, .slide-dock p' ),
                     ),
                     array(
                         'id'        => 'slide_dock_title',
                         'type'      => 'color',
-                        'title'     => __('Post title', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for the post title', 'redux-framework-demo'),
+                        'title'     => __('Post title', 'themetext'),
+                        'subtitle'  => __('Pick a color for the post title', 'themetext'),
                         'default'   => '#000000',
                         'output'    => array( 'color' => '.slide-dock .entry-meta a, .slide-dock h4 a' ),
                     ),
@@ -1212,38 +1163,38 @@
             array(
                 'id'        => 'widgets_footer_start',
                 'type'      => 'section',
-                'title'     => __('Widgetized Footer', 'redux-framework-demo'),
+                'title'     => __('Widgetized Footer', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'footer_color',
                         'type'      => 'color',
-                        'title'     => __('Background', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for the backgound', 'redux-framework-demo'),
+                        'title'     => __('Background', 'themetext'),
+                        'subtitle'  => __('Pick a color for the backgound', 'themetext'),
                         'default'   => '#111111',
                         'output'    => array( 'background-color' => '.footer-sidebar, .footer-sidebar .widget_ti_most_commented li a, .footer-sidebar .widget-slider .widget-post-details .widget-post-category, .footer-sidebar .widget-posts-classic-entries .widget-post-details .widget-post-category, .footer-sidebar .widget-posts-entries .widget-post-item:not(:nth-child(1)) .widget-post-details', 'border-bottom-color' => '.footer-sidebar .widget_ti_latest_comments .comment-text:after', 'color' => '.footer-sidebar .widget_ti_most_commented span i' ),
                     ),
                     array(
                         'id'        => 'footer_titles',
                         'type'      => 'color',
-                        'title'     => __('Titles', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for widget titles', 'redux-framework-demo'),
+                        'title'     => __('Titles', 'themetext'),
+                        'subtitle'  => __('Pick a color for widget titles', 'themetext'),
                         'default'   => '#ffcc0d',
                         'output'    => array( 'color' => '.footer-sidebar .widget h3', 'background-color' => '.footer-sidebar .rating-total-indicator .sides span, .footer-sidebar .widget_ti_most_commented span', 'border-top-color' => '.footer-sidebar .widget_ti_most_commented span i:before' ),
                     ),
                     array(
                         'id'        => 'footer_text',
                         'type'      => 'color',
-                        'title'     => __('Text', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for widget text', 'redux-framework-demo'),
+                        'title'     => __('Text', 'themetext'),
+                        'subtitle'  => __('Pick a color for widget text', 'themetext'),
                         'default'   => '#ffffff',
                         'output'    => array( 'color' => '.footer-sidebar, .footer-sidebar button, .footer-sidebar select, .footer-sidebar input,  .footer-sidebar input[type="submit"]', 'border-color' => '.footer-sidebar input, .footer-sidebar select, .footer-sidebar input[type="submit"]', 'border-bottom-color' => '.footer-sidebar .widget_ti_latest_comments .comment-text:before' ),
                     ),
                     array(
                         'id'        => 'footer_links',
                         'type'      => 'link_color',
-                        'title'     => __('Links Color', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for widget links', 'redux-framework-demo'),
+                        'title'     => __('Links Color', 'themetext'),
+                        'subtitle'  => __('Pick a color for widget links', 'themetext'),
                         'output'  => array('.footer-sidebar .widget a'),
                         'active'    => false,
                         'default'   => array(
@@ -1254,8 +1205,8 @@
                     array(
                         'id'        => 'footer_border',
                         'type'      => 'border',
-                        'title'     => __('Borders Color', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for borders', 'redux-framework-demo'),
+                        'title'     => __('Borders Color', 'themetext'),
+                        'subtitle'  => __('Pick a color for borders', 'themetext'),
                         'default'   => array(
                             'border-color'  => '#585b61',
                             'border-style'  => 'dotted',
@@ -1264,7 +1215,7 @@
                             'border-bottom' => '1px',
                             'border-left'   => '1px'
                         ),
-                        'output' => array( 'border' => '.widget-area-2, .widget-area-3, .footer-sidebar .widget' ),
+                        'output' => array( 'border' => '.footer-sidebar, .widget-area-2, .widget-area-3, .footer-sidebar .widget' ),
                     ),
             array(
                 'id'        => 'widgets_footer_end',
@@ -1277,23 +1228,23 @@
             array(
                 'id'        => 'full_width_footer_start',
                 'type'      => 'section',
-                'title'     => __('Full Width Footer', 'redux-framework-demo'),
-                'subtitle'     => __('Can be used for your Instagram feed', 'redux-framework-demo'),
+                'title'     => __('Full Width Footer', 'themetext'),
+                'subtitle'     => __('Can be used for your Instagram feed', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'full_width_footer_bg',
                         'type'      => 'color',
-                        'title'     => __('Background', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for the backgound', 'redux-framework-demo'),               
+                        'title'     => __('Background', 'themetext'),
+                        'subtitle'  => __('Pick a color for the backgound', 'themetext'),               
                         'default'   => '#f8f8f8',
                         'output'    => array( 'background-color' => '.full-width-sidebar' ),
                     ),
                     array(
                         'id'        => 'full_width_footer_text',
                         'type'      => 'color',
-                        'title'     => __('Text and Links', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for text and links', 'redux-framework-demo'),
+                        'title'     => __('Text and Links', 'themetext'),
+                        'subtitle'  => __('Pick a color for text and links', 'themetext'),
                         'default'   => '#000',
                         'output'    => array( 'color' => '.full-width-sidebar, .full-width-sidebar a' ),
                     ),
@@ -1308,23 +1259,23 @@
             array(
                 'id'        => 'site_footer_start',
                 'type'      => 'section',
-                'title'     => __('Footer Copyright', 'redux-framework-demo'),
-                'subtitle'     => __('Footer with your site copyright text', 'redux-framework-demo'),
+                'title'     => __('Footer Copyright', 'themetext'),
+                'subtitle'     => __('Footer with your site copyright text', 'themetext'),
                 'indent'    => false,
             ),
                     array(
                         'id'        => 'site_footer_bg',
                         'type'      => 'color',
-                        'title'     => __('Background', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for the backgound', 'redux-framework-demo'),               
+                        'title'     => __('Background', 'themetext'),
+                        'subtitle'  => __('Pick a color for the backgound', 'themetext'),               
                         'default'   => '#000000',
                         'output'    => array( 'background-color' => '.copyright' ),
                     ),
                     array(
                         'id'        => 'site_footer_text',
                         'type'      => 'color',
-                        'title'     => __('Text and Links', 'redux-framework-demo'),
-                        'subtitle'  => __('Pick a color for text and links', 'redux-framework-demo'),
+                        'title'     => __('Text and Links', 'themetext'),
+                        'subtitle'  => __('Pick a color for text and links', 'themetext'),
                         'default'   => '#ffffff',
                         'output'    => array( 'color' => '.copyright, .copyright a' ),
                     ),
@@ -1341,54 +1292,54 @@
     // ---> Post Item
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-edit',
-        'title'     => __('Post Item', 'redux-framework-demo'),
+        'title'     => __('Post Item', 'themetext'),
         'fields'    => array(
             array(
                 'id'        => 'post_item_info',
                 'type'      => 'info',
-                'desc'      => __('Controls the post item in categories, archives and posts page.', 'redux-framework-demo')
+                'desc'      => __('Controls the post item in categories, archives and posts page.', 'themetext')
             ),
             array(
                 'id'        => 'post_item_date',
                 'type'      => 'switch',
-                'title'     => __('Date', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the date', 'redux-framework-demo'),
+                'title'     => __('Date', 'themetext'),
+                'subtitle'  => __('Enable or Disable the date', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'post_item_author',
                 'type'      => 'switch',
-                'title'     => __('Author Name', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the author name', 'redux-framework-demo'),
+                'title'     => __('Author Name', 'themetext'),
+                'subtitle'  => __('Enable or Disable the author name', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'post_item_excerpt',
                 'type'      => 'switch',
-                'title'     => __('Excerpt', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the execrpt', 'redux-framework-demo'),
+                'title'     => __('Excerpt', 'themetext'),
+                'subtitle'  => __('Enable or Disable the execrpt', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'site_wide_excerpt_length',
                 'type'      => 'text',
-                'title'     => __('Excerpt Length', 'redux-framework-demo'),
-                'subtitle'  => __('Enter a number of words to limit the exceprt site wide', 'redux-framework-demo'),
+                'title'     => __('Excerpt Length', 'themetext'),
+                'subtitle'  => __('Enter a number of words to limit the exceprt site wide', 'themetext'),
                 'validate'  => 'numeric',
                 'default'   => '24',
             ),
             array(
                 'id'        => 'post_item_share',
                 'type'      => 'switch',
-                'title'     => __('Share Icons', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the share icons', 'redux-framework-demo'),
+                'title'     => __('Share Icons', 'themetext'),
+                'subtitle'  => __('Enable or Disable the share icons', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'post_item_read_more',
                 'type'      => 'switch',
-                'title'     => __('Read More', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the read more link', 'redux-framework-demo'),
+                'title'     => __('Read More', 'themetext'),
+                'subtitle'  => __('Enable or Disable the read more link', 'themetext'),
                 'default'   => 1,
             ),
         ) 
@@ -1398,14 +1349,14 @@
     // Single Post
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-file-edit',
-        'title'     => __('Single Post', 'redux-framework-demo'),
+        'title'     => __('Single Post', 'themetext'),
         'fields'    => array(
             array(
                 'id'        => 'single_media_position',
                 'type'      => 'button_set',
-                'title'     => __('Media Position', 'redux-framework-demo'),
-                'subtitle'  => __('Applies to Featured Image, Gallery, Video or Audio.', 'redux-framework-demo'),
-                'desc'      => __('"Full Width" and "Above the Content" will work site wide.<br /> "Define Per Post" enables the "Media Position" option in "Post Options" box in each post.', 'redux-framework-demo'),
+                'title'     => __('Media Position', 'themetext'),
+                'subtitle'  => __('Applies to Featured Image, Gallery, Video or Audio.', 'themetext'),
+                'desc'      => __('"Full Width" and "Above the Content" will work site wide.<br /> "Define Per Post" enables the "Media Position" option in "Post Options" box in each post.', 'themetext'),
                 'options'   => array(
                     'fullwidth' => 'Full Width',
                     'abovecontent' => 'Above the Content',
@@ -1416,9 +1367,9 @@
             array(
                 'id'        => 'single_title_position',
                 'type'      => 'button_set',
-                'title'     => __('Title Position', 'redux-framework-demo'),
-                'subtitle'  => __('Applies to post main title', 'redux-framework-demo'),
-                'desc'      => __('"Full Width" and "Above the Content" will work site wide.<br /> "Define Per Post" enables the "Title Position" option in "Post Options" box in each post.', 'redux-framework-demo'),
+                'title'     => __('Title Position', 'themetext'),
+                'subtitle'  => __('Applies to post main title', 'themetext'),
+                'desc'      => __('"Full Width" and "Above the Content" will work site wide.<br /> "Define Per Post" enables the "Title Position" option in "Post Options" box in each post.', 'themetext'),
                 'options'   => array(
                     'fullwidth' => 'Full Width',
                     'abovecontent' => 'Above the Content',
@@ -1429,71 +1380,71 @@
             array(
                 'id'        => 'single_featured_image',
                 'type'      => 'switch',
-                'title'     => __('Featured Image', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable featured image', 'redux-framework-demo'),
+                'title'     => __('Featured Image', 'themetext'),
+                'subtitle'  => __('Enable or Disable featured image', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_author_name',
                 'type'      => 'switch',
-                'title'     => __('Author name', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable post author name', 'redux-framework-demo'),
+                'title'     => __('Author name', 'themetext'),
+                'subtitle'  => __('Enable or Disable post author name', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_post_cat_name',
                 'type'      => 'switch',
-                'title'     => __('Category name', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the post category name', 'redux-framework-demo'),
+                'title'     => __('Category name', 'themetext'),
+                'subtitle'  => __('Enable or Disable the post category name', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_post_date',
                 'type'      => 'switch',
-                'title'     => __('Post Date', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the post date', 'redux-framework-demo'),
+                'title'     => __('Post Date', 'themetext'),
+                'subtitle'  => __('Enable or Disable the post date', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_manual_excerpt',
                 'type'      => 'switch',
-                'title'     => __('Manual Excerpt', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the manual Excerpt', 'redux-framework-demo'),
+                'title'     => __('Manual Excerpt', 'themetext'),
+                'subtitle'  => __('Enable or Disable the manual Excerpt', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_manual_excerpt',
                 'type'      => 'switch',
-                'title'     => __('Manual Excerpt', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the manual Excerpt', 'redux-framework-demo'),
+                'title'     => __('Manual Excerpt', 'themetext'),
+                'subtitle'  => __('Enable or Disable the manual Excerpt', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_nav_arrows',
                 'type'      => 'switch',
-                'title'     => __('Previous and Next Nav', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable Previous Post and Next Post navigation', 'redux-framework-demo'),
+                'title'     => __('Previous and Next Nav', 'themetext'),
+                'subtitle'  => __('Enable or Disable Previous Post and Next Post navigation', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_tags_list',
                 'type'      => 'switch',
-                'title'     => __('Tags', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the tags list', 'redux-framework-demo'),
+                'title'     => __('Tags', 'themetext'),
+                'subtitle'  => __('Enable or Disable the tags list', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_social',
                 'type'      => 'switch',
-                'title'     => __('Social Share Links', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable social share links panel', 'redux-framework-demo'),
+                'title'     => __('Social Share Links', 'themetext'),
+                'subtitle'  => __('Enable or Disable social share links panel', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_social_style',
                 'type'      => 'radio',
-                'title'     => __('Social Share Link Style', 'redux-framework-demo'),
-                'subtitle'  => __('Specify social share links panel styling', 'redux-framework-demo'),
+                'title'     => __('Social Share Link Style', 'themetext'),
+                'subtitle'  => __('Specify social share links panel styling', 'themetext'),
                 'options'   => array(
                     'social_default' => 'Minimal Links',
                     'social_colors' => 'Colorful Links',
@@ -1505,14 +1456,14 @@
             array(
                 'id'        => 'single_twitter_user',
                 'type'      => 'text',
-                'title'     => __('Twitter Username', 'redux-framework-demo'),
-                'subtitle'  => __('Your Twitter username for Twitter share link, without @', 'redux-framework-demo'),
+                'title'     => __('Twitter Username', 'themetext'),
+                'subtitle'  => __('Your Twitter username for Twitter share link, without @', 'themetext'),
             ),
             array(
                 'id'        => 'single_rating_box_style',
                 'type'      => 'button_set',
-                'title'     => __('Rating Box Style', 'redux-framework-demo'),
-                'subtitle'  => __('Select rating box style', 'redux-framework-demo'),
+                'title'     => __('Rating Box Style', 'themetext'),
+                'subtitle'  => __('Select rating box style', 'themetext'),
                 'options'   => array(
                     'rating_circles' => 'Circles',
                     'rating_bars' => 'Bars',
@@ -1522,8 +1473,8 @@
             array(
                 'id'        => 'single_rating_box',
                 'type'      => 'button_set',
-                'title'     => __('Rating Box Position', 'redux-framework-demo'),
-                'subtitle'  => __('Specify where to show the rating box', 'redux-framework-demo'),
+                'title'     => __('Rating Box Position', 'themetext'),
+                'subtitle'  => __('Specify where to show the rating box', 'themetext'),
                 'options'   => array(
                     'rating_top' => 'Post Content Top', 
                     'rating_bottom' => 'Post Content Bottom',
@@ -1533,36 +1484,36 @@
             array(
                 'id'        => 'single_author',
                 'type'      => 'switch',
-                'title'     => __('Author Box', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the author box', 'redux-framework-demo'),
+                'title'     => __('Author Box', 'themetext'),
+                'subtitle'  => __('Enable or Disable the author box', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_author_icons',
                 'type'      => 'switch',
-                'title'     => __('Author Box Social Icons', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the author box social icons', 'redux-framework-demo'),
+                'title'     => __('Author Box Social Icons', 'themetext'),
+                'subtitle'  => __('Enable or Disable the author box social icons', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_slide_dock',
                 'type'      => 'switch',
-                'title'     => __('Slide Dock', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the slide dock in the bottom right corner', 'redux-framework-demo'),
+                'title'     => __('Slide Dock', 'themetext'),
+                'subtitle'  => __('Enable or Disable the slide dock in the bottom right corner', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_related',
                 'type'      => 'switch',
-                'title'     => __('Related Posts', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the Related Posts box', 'redux-framework-demo'),
+                'title'     => __('Related Posts', 'themetext'),
+                'subtitle'  => __('Enable or Disable the Related Posts box', 'themetext'),
                 'default'   => 1,
             ),
             array(
                 'id'        => 'single_related_posts_show_by',
                 'type'      => 'button_set',
-                'title'     => __('Show Related Posts By', 'redux-framework-demo'),
-                'subtitle'  => __('Specify the Related Posts output', 'redux-framework-demo'),
+                'title'     => __('Show Related Posts By', 'themetext'),
+                'subtitle'  => __('Specify the Related Posts output', 'themetext'),
                 'options'   => array(
                     'related_cat' => 'Category',
                     'related_tag' => 'Tag',
@@ -1572,8 +1523,8 @@
             array(
                 'id'        => 'single_related_posts_to_show',
                 'type'      => 'button_set',
-                'title'     => __('Number of Related Posts', 'redux-framework-demo'),
-                'subtitle'  => __('Specify the number Related Posts to output', 'redux-framework-demo'),
+                'title'     => __('Number of Related Posts', 'themetext'),
+                'subtitle'  => __('Specify the number Related Posts to output', 'themetext'),
                 'options'   => array(
                     '3' => '3',
                     '6' => '6',
@@ -1588,18 +1539,18 @@
     // ---> Posts Page
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-file',
-        'title'     => __('Posts Page', 'redux-framework-demo'),
+        'title'     => __('Posts Page', 'themetext'),
         'fields'    => array(
             array(
                 'id'        => 'posts_page_info',
                 'type'      => 'info',
-                'desc'      => __('Posts Page is created under Settings &rarr; Reading. For extended info please see "03. Posts Page" in the documentaion.', 'redux-framework-demo')
+                'desc'      => __('Posts Page is created under Settings &rarr; Reading. For extended info please see "03. Posts Page" in the documentaion.', 'themetext')
             ),
             array(
                 'id'        => 'posts_page_title',
                 'type'      => 'button_set',
-                'title'     => __('Page Title', 'redux-framework-demo'),
-                'subtitle'  => __('Specify the page title behavior', 'redux-framework-demo'),
+                'title'     => __('Page Title', 'themetext'),
+                'subtitle'  => __('Specify the page title behavior', 'themetext'),
                 'options'   => array(
                     'no_title' => 'No Title',
                     'full_width_title' => 'Full Width',
@@ -1610,15 +1561,15 @@
             array(
                 'id'        => 'posts_page_slider',
                 'type'      => 'switch',
-                'title'     => __('Posts Slider', 'redux-framework-demo'),
-                'subtitle'  => __('Enable or Disable the slider.', 'redux-framework-demo'),
+                'title'     => __('Posts Slider', 'themetext'),
+                'subtitle'  => __('Enable or Disable the slider.', 'themetext'),
                 'default'   => 0,
             ),
             array(
                 'id'        => 'posts_page_layout',
                 'type'      => 'image_select',
-                'title'     => __('Posts Layout', 'redux-framework-demo'),
-                'subtitle'  => __('Select the page layout', 'redux-framework-demo'),
+                'title'     => __('Posts Layout', 'themetext'),
+                'subtitle'  => __('Select the page layout', 'themetext'),
                 'options'   => array(
                     'masonry-layout' => array('img' => get_template_directory_uri() . '/admin/images/to-icon-post-masonry.png'),
                     'grid-layout' => array('img' => get_template_directory_uri() . '/admin/images/to-icon-post-grid.png'),
@@ -1630,8 +1581,8 @@
             array(
                 'id'        => 'posts_page_columns',
                 'type'      => 'button_set',
-                'title'     => __('Number Of Columns', 'redux-framework-demo'),
-                'subtitle'  => __('Select the number of columns for this layout', 'redux-framework-demo'),
+                'title'     => __('Number Of Columns', 'themetext'),
+                'subtitle'  => __('Select the number of columns for this layout', 'themetext'),
                 'required'  => array(
                     array( 'posts_page_layout', '!=', 'list-layout'),
                     array( 'posts_page_layout', '!=', 'classic-layout')
@@ -1653,30 +1604,30 @@
     
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-shopping-cart',
-        'title'     => __('WooCommerce', 'redux-framework-demo'),
+        'title'     => __('WooCommerce', 'themetext'),
         'fields'    => array(
             
             array(
 				'id'        => 'smwc_enable_cart_ste_wide',
 				'type'      => 'switch',
-				'title'     => __('Cart', 'redux-framework-demo'),
-				'subtitle'  => __('Enable or Disable cart site wide, not only in shop pages', 'redux-framework-demo'),
+				'title'     => __('Cart', 'themetext'),
+				'subtitle'  => __('Enable or Disable cart site wide, not only in shop pages', 'themetext'),
 				'default'   => 0,
 			),
             
             array(
 				'id'        => 'smwc_enable_sidebar',
 				'type'      => 'switch',
-				'title'     => __('Sidebar', 'redux-framework-demo'),
-				'subtitle'  => __('Enable or Disable Sidebar on Products Categories', 'redux-framework-demo'),
+				'title'     => __('Sidebar', 'themetext'),
+				'subtitle'  => __('Enable or Disable Sidebar on Products Categories', 'themetext'),
 				'default'   => 0,
 			),
 		
 			array(
 				'id'        => 'smwc_product_sorting',
 				'type'      => 'switch',
-				'title'     => __('Product Sorting', 'redux-framework-demo'),
-				'subtitle'  => __('Show or Hide Product Sorting', 'redux-framework-demo'),
+				'title'     => __('Product Sorting', 'themetext'),
+				'subtitle'  => __('Show or Hide Product Sorting', 'themetext'),
 				'default'   => 0,
 			),
            
@@ -1684,14 +1635,14 @@
             array(
                 'id'        => 'smwc_product_item_start',
                 'type'      => 'section',
-                'title'     => __('Product Item', 'redux-framework-demo'),
-                'subtitle'  => __('Product item on Shop Page and on Category Page', 'redux-framework-demo'),
+                'title'     => __('Product Item', 'themetext'),
+                'subtitle'  => __('Product item on Shop Page and on Category Page', 'themetext'),
                 'indent'    => false,
             ),                array(
                     'id'        => 'smwc_page_layout',
                     'type'      => 'image_select',
-                    'title'     => __('Layout', 'redux-framework-demo'),
-                    'subtitle'  => __('Select products layout<br /><br /> 1. Masonry<br />2. Grid<br />3. List<br />4. Classic<br />5. Asymmetric<br /><br />', 'redux-framework-demo'),
+                    'title'     => __('Layout', 'themetext'),
+                    'subtitle'  => __('Select products layout<br /><br /> 1. Masonry<br />2. Grid<br />3. List<br />4. Classic<br />5. Asymmetric<br /><br />', 'themetext'),
                     'options'   => array(
                         'masonry-layout' => array('img' => get_template_directory_uri() . '/admin/images/to-icon-post-masonry.png'),
                         'grid-layout' => array('img' => get_template_directory_uri() . '/admin/images/to-icon-post-grid.png'),
@@ -1705,8 +1656,8 @@
                 array(
                     'id'        => 'smwc_product_item_columns',
                     'type'      => 'button_set',
-                    'title'     => __('Number Of Columns', 'redux-framework-demo'),
-                    'subtitle'  => __('Select the number of columns for this layout<br/>(Applies only to Masonry or Grid layout)', 'redux-framework-demo'),
+                    'title'     => __('Number Of Columns', 'themetext'),
+                    'subtitle'  => __('Select the number of columns for this layout<br/>(Applies only to Masonry or Grid layout)', 'themetext'),
                     'options'   => array(
                         'columns_2' => '2', 
                         'columns_3' => '3',
@@ -1723,8 +1674,8 @@
                 array(
                     'id'        => 'smwc_description_on_image',
                     'type'      => 'switch',
-                    'title'     => __('Image Overlay', 'redux-framework-demo'),
-                    'subtitle'  => __('Enable or Disable product details over the image on mouseover<br />(Applies only to Masonry or Grid layout)<br /><br />', 'redux-framework-demo'),
+                    'title'     => __('Image Overlay', 'themetext'),
+                    'subtitle'  => __('Enable or Disable product details over the image on mouseover<br />(Applies only to Masonry or Grid layout)<br /><br />', 'themetext'),
                     'required'  => array(
                                     array('smwc_page_layout', 'not', 'list-layout'),
                                     array('smwc_page_layout', 'not', 'classic-layout'),
@@ -1736,32 +1687,32 @@
                 array(
                     'id'        => 'smwc_category_name',
                     'type'      => 'switch',
-                    'title'     => __('Category name', 'redux-framework-demo'),
-                    'subtitle'  => __('Enable or Disable the post category name', 'redux-framework-demo'),
+                    'title'     => __('Category name', 'themetext'),
+                    'subtitle'  => __('Enable or Disable the post category name', 'themetext'),
                     'default'   => 0,
                 ),
 
                 array(
                     'id'        => 'smwc_rating_stars',
                     'type'      => 'switch',
-                    'title'     => __('Rating Stars', 'redux-framework-demo'),
-                    'subtitle'  => __('Enable or Disable the rating stars under the title', 'redux-framework-demo'),
+                    'title'     => __('Rating Stars', 'themetext'),
+                    'subtitle'  => __('Enable or Disable the rating stars under the title', 'themetext'),
                     'default'   => 0,
                 ),
 
                 array(
                     'id'        => 'smwc_add_excerpt',
                     'type'      => 'switch',
-                    'title'     => __('Excerpt', 'redux-framework-demo'),
-                    'subtitle'  => __('Show or Hide the excerpt on product', 'redux-framework-demo'),
+                    'title'     => __('Excerpt', 'themetext'),
+                    'subtitle'  => __('Show or Hide the excerpt on product', 'themetext'),
                     'default'   => 0,
                 ),
 
                 array(
                     'id'        => 'smwc_add_cart_button',
                     'type'      => 'switch',
-                    'title'     => __('Add To Cart button', 'redux-framework-demo'),
-                    'subtitle'  => __('Show or Hide the Add To Cart button on Archive Page<br />(The button will appear only on Product Page)', 'redux-framework-demo'),
+                    'title'     => __('Add To Cart button', 'themetext'),
+                    'subtitle'  => __('Show or Hide the Add To Cart button on Archive Page<br />(The button will appear only on Product Page)', 'themetext'),
                     'default'   => 1,
                 ),
             
@@ -1775,15 +1726,15 @@
             array(
                'id'        => 'smwc_single_product_start',
                'type'      => 'section',
-               'title'     => __('Single Product Page', 'redux-framework-demo'),
+               'title'     => __('Single Product Page', 'themetext'),
                'indent'    => false,
             ),
 		
                     array(
                         'id'        => 'smwc_product_page_slider',
                         'type'      => 'button_set',
-                        'title'     => __('Slider on Product Page', 'redux-framework-demo'),
-                        'subtitle'  => __('Switch between Images List or Slider on Product Page', 'redux-framework-demo'),
+                        'title'     => __('Slider on Product Page', 'themetext'),
+                        'subtitle'  => __('Switch between Images List or Slider on Product Page', 'themetext'),
                         'options'   => array(
                             'images_list' => 'Images List', 
                             'images_slider' => 'Images Slider'
@@ -1794,8 +1745,8 @@
                     array(
                         'id'        => 'smwc_single_title_position',
                         'type'      => 'button_set',
-                        'title'     => __('Title Position', 'redux-framework-demo'),
-                        'subtitle'  => __('Applies to single product main title', 'redux-framework-demo'),
+                        'title'     => __('Title Position', 'themetext'),
+                        'subtitle'  => __('Applies to single product main title', 'themetext'),
                         'options'   => array(
                             'fullwidth' => 'Full Width',
                             'abovecontent' => 'Above the Content'
@@ -1815,27 +1766,27 @@
     // ---> Custom Code
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-glasses',
-        'title'     => __('Custom Code', 'redux-framework-demo'),
+        'title'     => __('Custom Code', 'themetext'),
         'fields'    => array(
             array(
                 'id'        => 'custom_css',
                 'type'      => 'textarea',
-                'title'     => __('Custom CSS', 'redux-framework-demo'),
-                'subtitle'  => __('Quickly add some CSS by adding it to this block.', 'redux-framework-demo'),
+                'title'     => __('Custom CSS', 'themetext'),
+                'subtitle'  => __('Quickly add some CSS by adding it to this block.', 'themetext'),
                 'rows'      => 20
             ),
             array(
                 'id'        => 'custom_js_header',
                 'type'      => 'textarea',
-                'title'     => __('Custom JavaScript/Analytics Header', 'redux-framework-demo'),
-                'subtitle'  => __('Paste here JavaScript and/or Analytics code wich will appear in the Header of your site. DO NOT include opening and closing script tags.', 'redux-framework-demo'),
+                'title'     => __('Custom JavaScript/Analytics Header', 'themetext'),
+                'subtitle'  => __('Paste here JavaScript and/or Analytics code wich will appear in the Header of your site. DO NOT include opening and closing script tags.', 'themetext'),
                 'rows'      => 12
             ),
             array(
                 'id'        => 'custom_js_footer',
                 'type'      => 'textarea',
-                'title'     => __('Custom JavaScript/Analytics Footer', 'redux-framework-demo'),
-                'subtitle'  => __('Paste JavaScript and/or Analytics code wich will appear in the Footer of your site. DO NOT include opening and closing script tags.', 'redux-framework-demo'),
+                'title'     => __('Custom JavaScript/Analytics Footer', 'themetext'),
+                'subtitle'  => __('Paste JavaScript and/or Analytics code wich will appear in the Footer of your site. DO NOT include opening and closing script tags.', 'themetext'),
                 'rows'      => 12
             ),
         )
@@ -1845,28 +1796,28 @@
     // ---> Ad Units
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-usd',
-        'title'     => __('Ad Units', 'redux-framework-demo'),
+        'title'     => __('Ad Units', 'themetext'),
         'fields'    => array(
             array(
                 'id'        => 'ad_units_info',
                 'type'      => 'info',
-                'desc'      => __('Add ads in one of the two formats: Image Ad or Code Generated Ad.<br />All ads sizes are unless it is says otherwise:<br />1. With sidebar: 770<br />2. Without sidebar: 1170', 'redux-framework-demo')
+                'desc'      => __('Add ads in one of the two formats: Image Ad or Code Generated Ad.<br />All ads sizes are unless it is says otherwise:<br />1. With sidebar: 770<br />2. Without sidebar: 1170', 'themetext')
             ),
             
             // Header Ads
             array(
                 'id'        => 'ad_header_start',
                 'type'      => 'section',
-                'title'     => __('Header Ad', 'redux-framework-demo'),
+                'title'     => __('Header Ad', 'themetext'),
                 'indent'    => false,
             ),
             array(
                 'id'        => 'header_image_ad',
                 'type'      => 'media',
                 'url'       => true,
-                'placeholder'  => __('Click the Upload button to upload the ad image', 'redux-framework-demo'),
-                'title'     => __('Ad Image', 'redux-framework-demo'),
-                'subtitle'  => __('Best size for header ad image is 728x90', 'redux-framework-demo'),
+                'placeholder'  => __('Click the Upload button to upload the ad image', 'themetext'),
+                'title'     => __('Ad Image', 'themetext'),
+                'subtitle'  => __('Best size for header ad image is 728x90', 'themetext'),
                 'default'  => array(
                     'url' => '',
                 ),
@@ -1874,15 +1825,15 @@
             array(
                 'id'            => 'header_image_ad_url',
                 'type'          => 'text',
-                'title'         => __('Ad link', 'redux-framework-demo'),
-                'subtitle'      => __('Enter a full URL of ad link', 'redux-framework-demo'),
+                'title'         => __('Ad link', 'themetext'),
+                'subtitle'      => __('Enter a full URL of ad link', 'themetext'),
                 'placeholder'   => 'http://'
             ),
             array(
                 'id'        => 'header_code_ad',
                 'type'      => 'textarea',
-                'title'     => __('Ad Code', 'redux-framework-demo'),
-                'subtitle'  => __('Paste the code generated ad. Best size is 728x90', 'redux-framework-demo')
+                'title'     => __('Ad Code', 'themetext'),
+                'subtitle'  => __('Paste the code generated ad. Best size is 728x90', 'themetext')
             ),
             array(
                 'id'        => 'ad_header_end',
@@ -1894,15 +1845,15 @@
             array(
                 'id'        => 'ad_single1_start',
                 'type'      => 'section',
-                'title'     => __('Single Post - Above the content', 'redux-framework-demo'),
+                'title'     => __('Single Post - Above the content', 'themetext'),
                 'indent'    => false,
             ),
             array(
                 'id'        => 'single_image_top_ad',
                 'type'      => 'media',
                 'url'       => true,
-                'placeholder'  => __('Click the Upload button to upload the ad image', 'redux-framework-demo'),
-                'title'     => __('Ad Image', 'redux-framework-demo'),
+                'placeholder'  => __('Click the Upload button to upload the ad image', 'themetext'),
+                'title'     => __('Ad Image', 'themetext'),
                 'default'  => array(
                     'url' => '',
                 ),
@@ -1910,14 +1861,14 @@
             array(
                 'id'            => 'single_image_top_ad_url',
                 'type'          => 'text',
-                'title'         => __('Ad link', 'redux-framework-demo'),
-                'subtitle'      => __('Enter a full URL of ad link', 'redux-framework-demo'),
+                'title'         => __('Ad link', 'themetext'),
+                'subtitle'      => __('Enter a full URL of ad link', 'themetext'),
                 'placeholder'   => 'http://'
             ),
             array(
                 'id'        => 'single_code_top_ad',
                 'type'      => 'textarea',
-                'title'     => __('Ad Code', 'redux-framework-demo'),
+                'title'     => __('Ad Code', 'themetext'),
             ),
             array(
                 'id'        => 'ad_single1_end',
@@ -1930,15 +1881,15 @@
             array(
                 'id'        => 'ad_single2_start',
                 'type'      => 'section',
-                'title'     => __('Single Post - Under the content', 'redux-framework-demo'),
+                'title'     => __('Single Post - Under the content', 'themetext'),
                 'indent'    => false,
             ),
             array(
                 'id'        => 'single_image_bottom_ad',
                 'type'      => 'media',
                 'url'       => true,
-                'placeholder'  => __('Click the Upload button to upload the ad image', 'redux-framework-demo'),
-                'title'     => __('Ad Image', 'redux-framework-demo'),
+                'placeholder'  => __('Click the Upload button to upload the ad image', 'themetext'),
+                'title'     => __('Ad Image', 'themetext'),
                 'default'  => array(
                     'url' => '',
                 ),
@@ -1946,14 +1897,14 @@
             array(
                 'id'            => 'single_image_bottom_ad_url',
                 'type'          => 'text',
-                'title'         => __('Ad link', 'redux-framework-demo'),
-                'subtitle'      => __('Enter a full URL of ad link', 'redux-framework-demo'),
+                'title'         => __('Ad link', 'themetext'),
+                'subtitle'      => __('Enter a full URL of ad link', 'themetext'),
                 'placeholder'   => 'http://'
             ),
             array(
                 'id'        => 'single_code_bottom_ad',
                 'type'      => 'textarea',
-                'title'     => __('Ad Code', 'redux-framework-demo'),
+                'title'     => __('Ad Code', 'themetext'),
             ),
             array(
                 'id'        => 'ad_single2_end',
@@ -1965,15 +1916,15 @@
             array(
                 'id'        => 'ad_footer_start',
                 'type'      => 'section',
-                'title'     => __('Footer', 'redux-framework-demo'),
+                'title'     => __('Footer', 'themetext'),
                 'indent'    => false,
             ),
             array(
                 'id'        => 'footer_image_ad',
                 'type'      => 'media',
                 'url'       => true,
-                'placeholder'  => __('Click the Upload button to upload the ad image', 'redux-framework-demo'),
-                'title'     => __('Ad Image', 'redux-framework-demo'),
+                'placeholder'  => __('Click the Upload button to upload the ad image', 'themetext'),
+                'title'     => __('Ad Image', 'themetext'),
                 'default'  => array(
                     'url' => '',
                 ),
@@ -1981,14 +1932,14 @@
             array(
                 'id'            => 'footer_image_ad_url',
                 'type'          => 'text',
-                'title'         => __('Ad link', 'redux-framework-demo'),
-                'subtitle'      => __('Enter a full URL of ad link', 'redux-framework-demo'),
+                'title'         => __('Ad link', 'themetext'),
+                'subtitle'      => __('Enter a full URL of ad link', 'themetext'),
                 'placeholder'   => 'http://'
             ),
             array(
                 'id'        => 'footer_code_ad',
                 'type'      => 'textarea',
-                'title'     => __('Ad Code', 'redux-framework-demo')
+                'title'     => __('Ad Code', 'themetext')
             ),
             array(
                 'id'        => 'ad_footer_end',
@@ -2002,15 +1953,15 @@
     // ---> 404 Error Page
     Redux::setSection( $opt_name, array(
         'icon'      => 'el-icon-warning-sign',
-        'title'     => __('Page 404', 'redux-framework-demo'),
+        'title'     => __('Page 404', 'themetext'),
         'fields'    => array(
             array(
                 'id'        => 'error_image',
                 'type'      => 'media',
                 'url'       => true,
-                'placeholder'  => __('Click the Upload button to upload the image', 'redux-framework-demo'),
-                'title'     => __('Upload Image', 'redux-framework-demo'),
-                'subtitle'  => __('Upload an image for the 404 error page', 'redux-framework-demo'),
+                'placeholder'  => __('Click the Upload button to upload the image', 'themetext'),
+                'title'     => __('Upload Image', 'themetext'),
+                'subtitle'  => __('Upload an image for the 404 error page', 'themetext'),
                 'default'  => array(
                     'url' => get_template_directory_uri() . '/images/error-page.png',
                     'width' => '402',
@@ -2041,11 +1992,12 @@
 
     
     /** remove redux menu under the tools **/
+    /*
     add_action( 'admin_menu', 'remove_redux_menu', 12 );
     function remove_redux_menu() {
         remove_submenu_page('tools.php','redux-about');
     }
-
+    */
 
     /**
      * This is a test function that will let you see when the compiler hook occurs.
@@ -2113,8 +2065,8 @@
     function dynamic_section( $sections ) {
         //$sections = array();
         $sections[] = array(
-            'title'  => __( 'Section via hook', 'redux-framework-demo' ),
-            'desc'   => __( '<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo' ),
+            'title'  => __( 'Section via hook', 'themetext' ),
+            'desc'   => __( '<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'themetext' ),
             'icon'   => 'el el-paper-clip',
             // Leave this as a blank section, no options just some intro text set above.
             'fields' => array()

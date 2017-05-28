@@ -36,7 +36,7 @@ global $ti_option;
 .footer-sidebar .widget_nav_menu li:after,
 .footer-sidebar .widget_categories ul li:after,
 .footer-sidebar .widget_recent_entries li:after,
-.footer-sidebar .widget_recent_comments li:after{background-color:<?php echo $ti_option['footer_links']['regular']; ?>;}
+.footer-sidebar .widget_recent_comments li:after{background-color:<?php echo $ti_option['footer_border']['border-color']; ?>;}
 .entry-title {text-transform:<?php echo $ti_option['post_title_style']; ?>;}
 <?php if ($ti_option['titles_background_switch'] == true && $ti_option['titles_background_image'] == true  ){ ?>
 .title-with-sep{background:url("<?php echo get_template_directory_uri(); ?>/images/section-header.png") repeat-x 0 50%;}

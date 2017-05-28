@@ -12,9 +12,9 @@
 
 <section class="category-slider">
 
-    <div class="global-sliders content-over-image posts-slider content-over-image-tint">
-    
-    <?php 
+    <div class="global-sliders posts-slider content-over-image content-over-image-tint">
+
+    <?php
 	$cat = get_query_var( 'cat' );
     $ti_cat_slider = new WP_Query(
         array(
@@ -31,15 +31,14 @@
             )
         )
     );
-    
-	if ( $ti_cat_slider->have_posts() ) : 
+
+	if ( $ti_cat_slider->have_posts() ) :
 
         while ( $ti_cat_slider->have_posts() ) : $ti_cat_slider->the_post(); ?>
-    
+
             <div>
 
                 <figure class="entry-image">
-                    <a class="entry-link" href="<?php the_permalink(); ?>"></a>
                     <?php if ( has_post_thumbnail() ) { ?>
                         <?php the_post_thumbnail( 'big-size' ); ?>
                     <?php } else { ?>
@@ -48,6 +47,7 @@
                 </figure>
 
                 <header class="entry-header">
+                    <a class="entry-link" href="<?php the_permalink(); ?>"></a>
                     <div class="inner">
                         <div class="inner-cell">
                             <div class="entry-frame">
@@ -61,15 +61,15 @@
                 </header>
 
             </div>
-        
+
         <?php endwhile; ?>
-            
+
         <?php wp_reset_postdata(); ?>
-            
+
     <?php endif; ?>
-    
+
     </div>
-    
+
 </section><!-- Slider -->
 
 <?php endif; ?>

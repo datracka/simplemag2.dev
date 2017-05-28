@@ -1,7 +1,7 @@
 <?php
 /**
  * Social Share Icons with count
- * displays in Single Post and each 
+ * displays in Single Post and each
  * post item accross the site:
  * page composer sections and archives
  *
@@ -10,9 +10,9 @@
 **/
 
 function social_share_icons() {
-    
+
     if ( is_single() ) :
-        
+
         global $ti_option;
 
         // Add class if social share links is selected as Colorful
@@ -31,18 +31,18 @@ function social_share_icons() {
         if ( ! empty ( $ti_option['single_twitter_user'] ) ) {
             $twitter_user = $ti_option['single_twitter_user'];
         }
-    
+
         // Labels for Single Post
         $label_facebook = '<span class="share-label">' . __( 'Facebook', 'themetext' ). '</span>';
         $label_twitter = '<span class="share-label">' . __( 'Twitter', 'themetext' ). '</span>';
         $label_pinterest = '<span class="share-label">' . __( 'Pinterest', 'themetext' ). '</span>';
-    
+
     endif;
 
 ?>
 
     <div class="social-sharing<?php echo isset( $social_style ) ? $social_style : ''; ?>" data-permalink="<?php the_permalink();?>">
-        
+
         <a class="share-item share-facebook" href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>&t=<?php the_title_attribute(); ?>" target="blank">
             <i class="icomoon-facebook"></i>
             <?php echo isset( $label_facebook ) ? $label_facebook : ''; ?>
@@ -67,11 +67,11 @@ function social_share_icons() {
             <?php echo isset( $label_pinterest ) ? $label_pinterest : ''; ?>
         </a>
 
-        <?php 
+        <?php
         // Display other icons only in single post
         if ( is_single() ) {
         ?>
-        
+
         <div class="share-item share-more">
 
             <span class="share-plus"></span>
@@ -91,7 +91,7 @@ function social_share_icons() {
             </div>
 
         </div>
-        
+
         <?php } ?>
 
     </div><!-- social-sharing -->

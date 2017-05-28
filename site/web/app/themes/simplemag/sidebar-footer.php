@@ -18,19 +18,19 @@ if (   ! is_active_sidebar( 'sidebar-3' ) // Footer Area One
 )
 	return;
 // If we get this far, we have widgets. Let do this.
-?>
 
 
-<?php
+global $ti_option;
+
+
 /**
  * Footer full width sidebar
  * can be used to display Instagram feeds
 **/
 if ( is_active_sidebar( 'sidebar-full-width' ) ) : ?>
     <div class="full-width-sidebar">
-        <?php 
-        global $ti_option;
-        if ( $ti_option['full_width_widget'] == 'winwidth' ) :
+        <?php
+        if ( $ti_option['full_width_widget'] == 1 ) :
             dynamic_sidebar( 'sidebar-full-width' );
         else :
         ?>
@@ -44,7 +44,23 @@ if ( is_active_sidebar( 'sidebar-full-width' ) ) : ?>
 <?php endif; ?>
 
 
-<div class="footer-sidebar">
+<?php 
+/**
+ * Top Border for footer if bg is white
+**/
+$footer_bg = $ti_option['footer_color'];
+$footer_border = $ti_option['footer_border']['border-top'];
+
+if ( $footer_bg == '#ffffff' && $footer_border != '0px' ) :
+    $top_border = sanitize_html_class( 'footer-border-top' );
+elseif ( $footer_bg == '#ffffff' && $footer_border == '0px' ) :
+    $top_border = sanitize_html_class( 'footer-border-top-gray' );
+else :
+    $top_border = '';
+endif;
+?>
+
+<div class="footer-sidebar <?php echo $top_border; ?>">
     <div id="supplementary" class="wrapper clearfix columns<?php ti_footer_sidebar_class(); ?>">
         <?php if ( is_active_sidebar( 'sidebar-3' ) ) : ?>
         <div class="widget-area widget-area-1" role="complementary">
