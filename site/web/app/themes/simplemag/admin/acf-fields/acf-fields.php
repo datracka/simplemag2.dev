@@ -2634,6 +2634,8 @@ acf_add_local_field_group(array (
 	'description' => '',
 ));
 
+$user = wp_get_current_user();
+// $user->get_role_caps()['administrator'];
 acf_add_local_field_group(array (
 	'key' => 'group_55eeb8ca2cd9b',
 	'title' => 'Post Options',
@@ -2698,7 +2700,7 @@ acf_add_local_field_group(array (
 				'id' => '',
 			),
 			'message' => 'Add to Posts Slider or Posts Carousel',
-			'default_value' => 0,
+			'default_value' => 1,
 		),
 		array (
 			'key' => 'field_53ad7fb9bd2bb',
