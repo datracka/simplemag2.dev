@@ -1,4 +1,8 @@
 # LaEnredadera.io 
 
-Plantilla wordpress del proyecto "revista de escritores"
+@deprecated / fuera de uso
+
+go to: https://github.com/datracka/laenredadera.io
+
+
 
